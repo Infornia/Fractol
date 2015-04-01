@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/04/01 17:51:04 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/04/01 19:03:28 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@
 # define PEAK_UP	30
 # define PEAK_DOWN	33
 # define RESET		29
-# define TKEY	10
+# define TKEY	13
+# define ZOOM_IN_M	5
+# define ZOOM_OUT_M	4
 
 /*
 **Structures
@@ -113,6 +115,8 @@ struct			s_data
 	int			rainbow;
 	double		zoom;
 	double		peaks;
+	int			mx;
+	int			my;
 	t_key		key_event[TKEY];
 	t_map		*map;
 };
@@ -177,6 +181,8 @@ void			more_zoom(t_data *d);
 void			less_peak(t_data *d);
 void			more_peak(t_data *d);
 void			rotation(t_point *p, int rot);
+void			zoom_in_mouse(t_data *d);
+void			zoom_out_mouse(t_data *d);
 
 /*
 *******************INUTILISE

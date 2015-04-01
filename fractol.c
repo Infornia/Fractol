@@ -6,13 +6,13 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2015/04/01 17:57:17 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/04/01 19:02:26 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_fdf_init(t_data *d, char *file)
+void	frac_init(t_data *d, char *file)
 {
 	int		i;
 
@@ -24,11 +24,10 @@ void	ft_fdf_init(t_data *d, char *file)
 	d->lr = X_WIN * 2 / 5;
 	d->ud = 200 + Y_WIN / 1000;
 	d->mlx = mlx_init();
-	d->win = mlx_new_window (d->mlx, X_WIN, Y_WIN, "FdF");
+	d->win = mlx_new_window (d->mlx, X_WIN, Y_WIN, "Fract'ol");
 	d->img = mlx_new_image(d->mlx, X_WIN, Y_WIN);
 	d->data_img = mlx_get_data_addr
 		(d->img, &(d->bpp), &(d->size), &(d->endian));
-	get_map(d);
 	init_events(d);
 	d->zoom = 1 + (X_WIN / d->map->map_w / 8) + (Y_WIN / d->map->map_h / 6);
 	d->peaks = d->map->z_max / Y_WIN;
@@ -41,7 +40,7 @@ void	ft_fdf_init(t_data *d, char *file)
 	}
 }
 
-void	ft_fdf_exit(t_data *d)
+void	frac_exit(t_data *d)
 {
 	(void)d;
 	exit(0);
@@ -71,13 +70,9 @@ int		key_hook(int keycode, t_data *d)
 		d->projection_type = PARA;
 	else if (keycode == 34)
 		d->projection_type = ISO;
-	//else if (keycode == 12)
-	//	d->rot = 1;
-	//else if (keycode == 13)
-	//	d->rot = 0;
 	while (i < TKEY)
 	{
-		if (d->key_event[i].key_code == keycode)
+		if (d->key_event[i].key_button == keycode)
 			d->key_event[i].event(d);
 		i++;
 	}
@@ -87,7 +82,20 @@ int		key_hook(int keycode, t_data *d)
 
 int		mouse_hook(int button, int x, int y, t_data *d)
 {
-	if (button == 1 && x > (X_WIN - 25) && y < 25)
-		ft_fdf_exit(d);
+	int		i;
+
+	i = 0;
+	if (button == 1)
+	{
+		d->mx = x;
+		d->my = x;
+	}
+	while (i < BUTTONS)
+	{
+		if (d->key_event[i].key_button == button)
+			d->key_event[i].event(d);
+		i++;
+	}
+	erase_img(d);
 	return (0);
 }
