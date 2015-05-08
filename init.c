@@ -3,47 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/25 20:43:17 by mwilk             #+#    #+#             */
-/*   Updated: 2015/04/01 19:03:46 by mwilk            ###   ########.fr       */
+/*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
+/*   Updated: 2015/05/08 19:57:05 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fractol.h"
 
-static t_key	set_event(int key_button, void (*event)(t_data *d))
+void	init_frac(t_data *d, char *file)
 {
-	t_key	key;
+	int		i;
 
-	key.key_button = key_button;
-	key.event = event;
-	return (key);
-}
-
-static void		reset(t_data *d)
-{
+	i = 0;
+	d->file_name = file;
 	d->projection_type = ISO;
 	d->draw_type = IMG;
 	d->color_mode = 0;
 	d->lr = X_WIN * 2 / 5;
 	d->ud = 200 + Y_WIN / 1000;
-	d->zoom = 1 + (X_WIN / d->map->map_w / 8) + (Y_WIN / d->map->map_h / 6);
-	d->peaks = d->map->z_max / Y_WIN;
+	d->mlx = mlx_init();
+	d->win = mlx_new_window (d->mlx, X_WIN, Y_WIN, "Fract'ol");
 }
 
-void			init_events(t_data *d)
+void	init_screen(t_img *d, void *mlx)
 {
-	d->key_event[0] = set_event(ESC, &ft_fdf_exit);
-	d->key_event[1] = set_event(UP, &move_up);
-	d->key_event[2] = set_event(DOWN, &move_down);
-	d->key_event[3] = set_event(LEFT, &move_left);
-	d->key_event[4] = set_event(RIGHT, &move_right);
-	d->key_event[5] = set_event(ZOOM_IN, &more_zoom);
-	d->key_event[6] = set_event(ZOOM_OUT, &less_zoom);
-	d->key_event[7] = set_event(PEAK_UP, &more_peak);
-	d->key_event[8] = set_event(PEAK_DOWN, &less_peak);
-	d->key_event[9] = set_event(RESET, &reset);
-	d->key_event[10] = set_event(ZOOM_IN_M, &zoom_in_mouse);
-	d->key_event[11] = set_event(ZOOM_OUT_M, &zoom_out_mouse);
+	d->img = mlx_new_image(mlx, X_WIN, Y_WIN);
+	d->data_img = mlx_get_data_addr
+		(d->img, &(d->bpp), &(d->size), &(d->endian));
+	d->bpp /= 8;
+	d->max_size = d->size * Y_WIN + d->bpp * X_WIN
+}
+
+void	init_julia(t_data *d, int x, int y)
+{
+	d->u.cx = d->julia_cx;
+	d->u.cy = d->julia_cy;
+	d->u.zx = 1.6 * (x - X_HALF) / (d->zoom_w) + d->os_x;
+	d->u.zy = 1.2 * (y - Y_HALF) / (d->zoom_h) + d->os_y;
+	d->u.i = 1;
+	d->u.cld = 4.0;
+	d->u.cln = 0;
+	d->last_iter = 0;
+}
+
+void	init_mandelbrot(t_data *d, int x, int y)
+{
+	d->u.cx = 1.6 (x - X_HALF) / (d->zoom_w * HALF_X);
+	d->u.cx += d->os_x - 0.5 + d->os_zoom_x / 2.0;
+	d->u.cx = 1.1 (y - Y_HALF) / (d->zoom_w * HALF_Y);
+	d->u.cy += d->os_y + d->os_zoom_y / 2.0;
+	d->u.zx = d->u.cx;
+	d->u.zy = d->u.cy;
+	d->u.i = 0;
+	d->u.cld = 4.0;
+	d->u.cln = 0;
+	d->last_iter = 0;
 }

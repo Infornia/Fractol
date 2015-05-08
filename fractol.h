@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/04/01 19:03:28 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/05/08 19:43:03 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,11 @@
 */
 
 # define X_WIN 2222
-# define Y_WIN X_WIN/2
-# define PARA	0
-# define ISO	1
-# define EYE	2
-# define PUT	0
-# define IMG	1
+# define Y_WIN 1111
+# define Y_HALF Y_WIN / 2
+# define X_HALF X_WIN / 2
+# define NB_FRACTAL 12
+# define NB_PAL 12
 
 /*
 **Colors
@@ -56,6 +55,8 @@
 # define DOWN		125
 # define LEFT		123
 # define RIGHT		124
+# define TAB		48
+# define SHIFT		257
 # define ZOOM_IN	24
 # define ZOOM_OUT	27
 # define PEAK_UP	30
@@ -77,51 +78,50 @@ typedef struct	s_key
 	void		(*event)(t_data *d);
 }				t_key;
 
-typedef struct	s_point
+typedef struct	s_util
 {
-	int		d3_x;
-	int		d3_y;
-	int		d3_z;
-	int		x;
-	int		y;
-	int		color;
 
-}				t_point;
+}				t_util;
 
-typedef struct	s_map
+typedef struct	s_img
 {
-	t_point		**data;
-	int			z_max;
-	int			map_h;
-	int			map_w;
-}				t_map;
-
-struct			s_data
-{
-	char		*file_name;
-	void		*mlx;
-	void		*win;
 	void		*img;
-	char		*data_img;
+	char		*data_img;	
 	int			bpp;
 	int			size;
 	int			endian;
+	int			max_size;
+}				t_img;
+
+struct			s_data
+{
+	void		*mlx;
+	void		*win;
+	t_img		screen;
+	t_img		pals[NB_PALS];
+	t_fractal	fractal[NB_FRACTAL];
+	t_util		u;
+	t_key		key_event[TKEY];
 	int			color;
 	int			color_mode;
 	int			projection_type;
 	int			draw_type;
 	int			lr;
 	int			ud;
-	int			rainbow;
+	int			current_pal;
+	double		mouse_x;
+	double		mouse_y;
+	double		c0x;
+	double		c0y;
 	double		zoom;
-	double		peaks;
-	int			mx;
-	int			my;
-	t_key		key_event[TKEY];
-	t_map		*map;
+	double		zoom_w;
+	double		zoom_h;
+	double		os_x;
+	double		os_y;
+	double		os_zoom_x;
+	double		os_zoom_y;
 };
 
-int				color_set(int key_code, t_data *e);
 
 /*
 **Prototypes
@@ -140,33 +140,10 @@ void			ft_fdf_exit(t_data *d);
 void			erase_img(t_data *d);
 
 /*
-*******************PARSING
-*/
-
-void			draw_board(t_data *d);
-void			get_map(t_data *d);
-int				line_count(char *file_name);
-t_map			*split_int_this(t_map *map, char *line, int y);
-t_point			create_point(int *x, int y, int z);
-
-/*
 *******************DRAW
 */
 
-void			print_map(t_data *d);
-void			draw_line(t_data *d, t_point p1, t_point *p2);
-void			calc(t_data *d, t_point *p);
-void			calc_control(t_point *p);
-void			change_proj(t_data *d);
-void			check_case(t_data *e, t_point p1, t_point p2);
-void			draw_case1(t_data *e, t_point p1, t_point p2);
-void			draw_case2(t_data *e, t_point p1, t_point p2);
-void			draw_rainbow(t_data *e, int size);
-void			draw_white(t_data *e, int size);
-void			draw_luminotherapy(t_data *e, int size);
-void			color_pixel(t_data *e, int color, int x, int y, int size);
-void			color_pixel2(t_data *e, int color, int x, int y, int size);
-int				color_selec(t_data *d, t_point p1, t_point p2);
+
 
 /*
 *******************MOVE
