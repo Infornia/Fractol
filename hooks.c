@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:13:30 by mwilk             #+#    #+#             */
-/*   Updated: 2015/05/08 19:57:00 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/05/13 18:04:29 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 int		expose_hook(t_data *d)
 {
 	draw(e);
-	mlx_put_image_to_window(e->mlx, e->win, e->screen.ptr, 0, 0);
+	mlx_put_image_to_window(e->mlx, e->win, e->screen.img, 0, 0);
 	return (0);
 }
 
 int		key_hook(int keycode, t_data *d)
 {
 	if (keycode == ESC)
-		ft_envdel(e);
+		frac_del(d);
 	else if (keycode == LEFT)
 		e->offset_x -= 0.1f / e->zoom;
 	else if (keycode == RIGHT)

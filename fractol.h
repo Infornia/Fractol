@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/05/08 19:43:03 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/05/13 18:59:43 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,29 @@
 # define NB_PAL 12
 
 /*
+** Textures
+*/
+# define T_PAL			"textures/pal.xpm"
+# define T_PAL1			"textures/pal1.xpm"
+# define T_PAL2			"textures/pal2.xpm"
+# define T_PAL3			"textures/pal3.xpm"
+# define T_PAL4			"textures/pal4.xpm"
+# define T_PAL5			"textures/pal5.xpm"
+# define T_PAL6			"textures/pal6.xpm"
+/*
+
 **Colors
 */
-# define RED	0xFF0000
-# define BLUE 	0x0000FF
-# define QUOISE	0x74BDF9
-# define GREEN 	0x00FF00
-# define PINK 	0xFF00FF
-# define WHITE 	0xFFFFFF
-# define GRAY 	0x0F0F0F
-# define BLACK 	0x000000
+# define RED		0xFF0000
+# define BLUE 		0x0000FF
+# define QUOISE		0x74BDF9
+# define GREEN 		0x00FF00
+# define PINK 		0xFF00FF
+# define WHITE 		0xFFFFFF
+# define GRAY 		0x0F0F0F
+# define BLACK 		0x000000
 # define RGB(r, g, b)(256 * 256 * (int)(r) + 256 * (int)(g) + (int)(b))
+# define ABS(x)		((x) < 0 ? -(x) : (x))
 
 /*
 **keys
@@ -62,7 +74,8 @@
 # define PEAK_UP	30
 # define PEAK_DOWN	33
 # define RESET		29
-# define TKEY	13
+# define KEY1		18
+# define KEY2		19
 # define ZOOM_IN_M	5
 # define ZOOM_OUT_M	4
 
@@ -71,6 +84,7 @@
 */
 
 typedef struct s_data	t_data;
+typedef int				 (*t_fractal)(t_data *d, int x, int y, int mi);
 
 typedef struct	s_key
 {
@@ -109,6 +123,9 @@ struct			s_data
 	int			lr;
 	int			ud;
 	int			current_pal;
+	int			current_frac;
+	int			click_x;
+	int			click_y;
 	double		mouse_x;
 	double		mouse_y;
 	double		c0x;
@@ -120,6 +137,8 @@ struct			s_data
 	double		os_y;
 	double		os_zoom_x;
 	double		os_zoom_y;
+	double		julia_cx;
+	double		julia_cy;
 };
 
 
@@ -130,36 +149,31 @@ struct			s_data
 /*
 *******************INIT
 */
-void			ft_fdf_init(t_data *d, char *file);		
-void			init_events(t_data *d);
+void			init_frac(t_data *d);
+void			init_screen(t_img *d, void * mlx);
+void			init_variables(t_data *d);
+void			init_images(t_data *d);
+void			init_image(t_data *d, char *path, int w, int h);
+void			init_julia(t_data *d, int x, int y);
+void			init_mandelbrot(t_data *d, int x, int y);
+void			frac_del(t_data *d);
 int				expose_hook(t_data *d);
 int				mouse_hook(int button, int x, int y, t_data *d);
+int				mouse_hook_move(int button, int x, int y, t_data *d);
 int				key_hook(int keycode, t_data *d);
-void			color_hook(int keycode, t_data *d);
-void			ft_fdf_exit(t_data *d);
-void			erase_img(t_data *d);
 
 /*
 *******************DRAW
 */
 
-
+void			draw(t_data *d);
+unsigned int	get_img_color(t_data *d, double it, int max_i);
 
 /*
 *******************MOVE
 */
 
-void			move_left(t_data *d);
-void			move_right(t_data *d);
-void			move_up(t_data *d);
-void			move_down(t_data *d);
-void			less_zoom(t_data *d);
-void			more_zoom(t_data *d);
-void			less_peak(t_data *d);
-void			more_peak(t_data *d);
-void			rotation(t_point *p, int rot);
-void			zoom_in_mouse(t_data *d);
-void			zoom_out_mouse(t_data *d);
+void			update_zoom(t_data *d);
 
 /*
 *******************INUTILISE

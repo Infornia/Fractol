@@ -6,18 +6,17 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
-/*   Updated: 2015/05/08 19:57:05 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/05/13 17:58:59 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_frac(t_data *d, char *file)
+void	init_frac(t_data *d)
 {
 	int		i;
 
 	i = 0;
-	d->file_name = file;
 	d->projection_type = ISO;
 	d->draw_type = IMG;
 	d->color_mode = 0;
@@ -34,6 +33,25 @@ void	init_screen(t_img *d, void *mlx)
 		(d->img, &(d->bpp), &(d->size), &(d->endian));
 	d->bpp /= 8;
 	d->max_size = d->size * Y_WIN + d->bpp * X_WIN
+}
+
+void	init_variables(t_data *d)
+{
+	d->os_zoom_x = 0.f;
+	d->os_zoom_y = 0.f;
+	d->os_x = 0.f;
+	d->os_y = 0.f;
+	d->zoom = 0.f;
+	d->click_x = 0;
+	d->click_y = 0;
+	d->move_x = 0;
+	d->move_y = 0;
+	d->c0x = 1.5 * (-X_HALF) / (d->zoom * X_HALF);
+	d->c0y = (-Y_HALF) / (d->zoom * Y_HALF);
+	d->zoom_w = d->zoom * (double)X_HALF;
+	d->zoom_h = d->zoom * (double)Y_HALF;
+	d->julia_cx = -0.8;
+	d->julia_cy = 0.3;
 }
 
 void	init_julia(t_data *d, int x, int y)

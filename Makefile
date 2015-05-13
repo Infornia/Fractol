@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/03/25 20:49:52 by mwilk            ###   ########.fr        #
+#    Updated: 2015/05/13 18:43:20 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,12 @@ OBJ_PATH = ./obj/
 SRC_PATH = ./
 
 OBJ = $(SRC:.c=.o)
-SRC = ft_fdf_color_set.c\
-	  ft_fdf_zoom.c\
-	  ft_fdf_projection.c\
-	  ft_fdf_control_move.c\
-	  ft_fdf_bres.c\
-	  ft_fdf.c\
+SRC = init.c\
+	  init_help.c\
+	  hooks.c\
+	  draw.c\
+	  color.c\
 	  main.c\
-	  ft_fdf_draw.c\
-	  ft_fdf_create_map.c\
-	  init.c
 
 OBJS = $(addprefix $(OJB_PATH),$(OBJ))
 SRCS = $(addprefix $(SRC_PATH),$(SRC))
