@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/05/13 18:59:43 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/01 19:39:30 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@
 # define LEFT		123
 # define RIGHT		124
 # define TAB		48
+# define PLUS		69
+# define MINUS		78
 # define SHIFT		257
 # define ZOOM_IN	24
 # define ZOOM_OUT	27
@@ -94,6 +96,14 @@ typedef struct	s_key
 
 typedef struct	s_util
 {
+	double		cx;
+	double		cy;
+	double		zx;
+	double		zy;
+	double		i;
+	double		cld;
+	double		cln;
+	double		last_iter;
 
 }				t_util;
 
@@ -105,6 +115,8 @@ typedef struct	s_img
 	int			size;
 	int			endian;
 	int			max_size;
+	int			w;
+	int			h;
 }				t_img;
 
 struct			s_data
@@ -112,10 +124,9 @@ struct			s_data
 	void		*mlx;
 	void		*win;
 	t_img		screen;
-	t_img		pals[NB_PALS];
+	t_img		pals[NB_PAL];
 	t_fractal	fractal[NB_FRACTAL];
 	t_util		u;
-	t_key		key_event[TKEY];
 	int			color;
 	int			color_mode;
 	int			projection_type;
@@ -126,6 +137,8 @@ struct			s_data
 	int			current_frac;
 	int			click_x;
 	int			click_y;
+	int			move_x;
+	int			move_y;
 	double		mouse_x;
 	double		mouse_y;
 	double		c0x;
@@ -149,17 +162,17 @@ struct			s_data
 /*
 *******************INIT
 */
+
+void			fractal_del(t_data *d);
 void			init_frac(t_data *d);
 void			init_screen(t_img *d, void * mlx);
 void			init_variables(t_data *d);
 void			init_images(t_data *d);
-void			init_image(t_data *d, char *path, int w, int h);
 void			init_julia(t_data *d, int x, int y);
 void			init_mandelbrot(t_data *d, int x, int y);
-void			frac_del(t_data *d);
 int				expose_hook(t_data *d);
 int				mouse_hook(int button, int x, int y, t_data *d);
-int				mouse_hook_move(int button, int x, int y, t_data *d);
+int				mouse_hook_move(int x, int y, t_data *d);
 int				key_hook(int keycode, t_data *d);
 
 /*
@@ -167,6 +180,7 @@ int				key_hook(int keycode, t_data *d);
 */
 
 void			draw(t_data *d);
+void			color_pixel(t_img *d, int color, int x, int y);
 unsigned int	get_img_color(t_data *d, double it, int max_i);
 
 /*

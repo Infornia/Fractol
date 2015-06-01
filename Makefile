@@ -6,12 +6,12 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/05/13 18:43:20 by mwilk            ###   ########.fr        #
+#    Updated: 2015/06/01 19:41:52 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = fdf
+NAME = fractol
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -21,11 +21,13 @@ SRC_PATH = ./
 
 OBJ = $(SRC:.c=.o)
 SRC = init.c\
-	  init_help.c\
+	  init_img.c\
+	  fractol.c\
+	  main.c\
 	  hooks.c\
+	  hooks_help.c\
 	  draw.c\
 	  color.c\
-	  main.c\
 
 OBJS = $(addprefix $(OJB_PATH),$(OBJ))
 SRCS = $(addprefix $(SRC_PATH),$(SRC))

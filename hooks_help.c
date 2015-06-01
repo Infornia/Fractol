@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 19:03:53 by mwilk             #+#    #+#             */
-/*   Updated: 2015/05/13 18:48:24 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/05/13 20:03:01 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	key_press_color_fractal(int	keycode, t_data *d)
 {
 	if (keycode == SHIFT)
 	{
-		d->cur_fractal--;
+		d->current_frac--;
 		if (d->current_frac < 0)
 			d->current_frac = NB_FRACTAL - 1;
 	}
@@ -43,9 +43,9 @@ void	key_press_color_fractal(int	keycode, t_data *d)
 		d->zoom -= d->zoom * 0.1f;
 		update_zoom(d);
 	}
-	else if (keycode == KEY_1)
+	else if (keycode == KEY1)
 		d->current_pal = (d->current_pal + 1) % NB_PAL;
-	else if (keycode == KEY_2)
+	else if (keycode == KEY2)
 	{
 		d->current_pal--;
 		if (d->current_pal < 0)

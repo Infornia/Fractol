@@ -6,17 +6,16 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:48:12 by mwilk             #+#    #+#             */
-/*   Updated: 2015/05/08 19:41:27 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/05/13 20:07:40 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fractol.h"
 
-int		main(int ac, char **av)
+int		main(void)
 {
 	t_data	d;
 
-	if (ac == 2)
-		main_frac(&d);
+	init_frac(&d);
 	return (0);
 }
