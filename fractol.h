@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/01 19:39:30 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/01 21:39:37 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,19 @@ typedef struct	s_key
 
 typedef struct	s_util
 {
+	double		old_zy;
+	double		old_zx;
 	double		cx;
 	double		cy;
 	double		zx;
+	double		zxx;
 	double		zy;
-	double		i;
+	double		zyy;
+	double		d;
 	double		cld;
-	double		cln;
-	double		last_iter;
+	int			cln;
+	int			last_iter;
+	int			i;
 
 }				t_util;
 
@@ -164,6 +169,7 @@ struct			s_data
 */
 
 void			fractal_del(t_data *d);
+void			main_frac(t_data *d);
 void			init_frac(t_data *d);
 void			init_screen(t_img *d, void * mlx);
 void			init_variables(t_data *d);

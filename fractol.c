@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/01 19:34:45 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/01 21:51:24 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	main_frac(t_data *d)
 {
+	init_frac(d);
 	init_screen(&d->screen, d->mlx);
 	init_images(d);
 	//init_fractal_fun(d);

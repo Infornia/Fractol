@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/05/13 20:03:46 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/01 21:53:05 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ unsigned int	get_img_color(t_data *d, double it, int max_i)
 void			draw(t_data *d)
 {
 	int		max_i;
-	int		color;
+//	int		color;
 	int		x;
 	int		y;
 
