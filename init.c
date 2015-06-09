@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/03 13:41:19 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/09 21:15:19 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	init_mlx(t_data *d)
 	d->color_mode = 0;
 	d->lr = X_WIN * 2 / 5;
 	d->ud = 200 + Y_WIN / 1000;
+	d->current_frac = 0;
+	d->current_pal = 0;
 	d->mlx = mlx_init();
 	d->win = mlx_new_window (d->mlx, X_WIN, Y_WIN, "Fract'ol");
 }
@@ -39,8 +41,8 @@ void	init_variables(t_data *d)
 	d->zoom = 0.f;
 	d->click_x = 0;
 	d->click_y = 0;
-	d->mouse_x = 0;
-	d->mouse_y = 0;
+	d->move_x = 0;
+	d->move_y = 0;
 	d->c0x = 1.5 * (-X_HALF) / (d->zoom * X_HALF);
 	d->c0y = (-Y_HALF) / (d->zoom * Y_HALF);
 	d->zoom_w = d->zoom * (double)X_HALF;
@@ -63,9 +65,9 @@ void	init_julia(t_data *d, int x, int y)
 
 void	init_mandelbrot(t_data *d, int x, int y)
 {
-	d->u.cx = 1.6 * (x - X_HALF) / (d->zoom_w * X_HALF);
+	d->u.cx = 1.6 * (x - X_HALF) / (d->zoom * X_HALF);
 	d->u.cx += d->os_x - 0.5 + d->os_zoom_x / 2.0;
-	d->u.cx = 1.1 * (y - Y_HALF) / (d->zoom_w * Y_HALF);
+	d->u.cx = 1.1 * (y - Y_HALF) / (d->zoom * Y_HALF);
 	d->u.cy += d->os_y + d->os_zoom_y / 2.0;
 	d->u.zx = d->u.cx;
 	d->u.zy = d->u.cy;

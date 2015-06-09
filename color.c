@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 20:08:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/05/13 18:35:45 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/09 21:01:40 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #define COL_G(i) (i >> 8) & 0x000000ff
 #define COL_B(i) i & 0x000000ff
 
-void	color_pixel(t_img *d, int color, int x, int y)
+void	color_pixel(t_img *d, unsigned int color, int x, int y)
 {
 	int	i;
 

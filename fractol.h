@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/03 14:11:36 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/09 21:24:35 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,37 +127,37 @@ typedef struct	s_img
 
 struct			s_data
 {
-	void		*mlx;
-	void		*win;
-	t_img		screen;
-	t_img		pals[NB_PAL];
-	t_fractal	fractal[NB_FRACTAL];
-	t_util		u;
-	int			color;
-	int			color_mode;
-	int			projection_type;
-	int			draw_type;
-	int			lr;
-	int			ud;
-	int			current_pal;
-	int			current_frac;
-	int			click_x;
-	int			click_y;
-	int			move_x;
-	int			move_y;
-	double		mouse_x;
-	double		mouse_y;
-	double		c0x;
-	double		c0y;
-	double		zoom;
-	double		zoom_w;
-	double		zoom_h;
-	double		os_x;
-	double		os_y;
-	double		os_zoom_x;
-	double		os_zoom_y;
-	double		julia_cx;
-	double		julia_cy;
+	void			*mlx;
+	void			*win;
+	t_img			screen;
+	t_img			pals[NB_PAL];
+	t_fractal		fractal[NB_FRACTAL];
+	t_util			u;
+	unsigned int	color;
+	int				color_mode;
+	int				projection_type;
+	int				draw_type;
+	int				lr;
+	int				ud;
+	int				current_pal;
+	int				current_frac;
+	int				click_x;
+	int				click_y;
+	double			mouse_x;
+	double			mouse_y;
+	double			move_x;
+	double			move_y;
+	double			c0x;
+	double			c0y;
+	double			zoom;
+	double			zoom_w;
+	double			zoom_h;
+	double			os_x;
+	double			os_y;
+	double			os_zoom_x;
+	double			os_zoom_y;
+	double			julia_cx;
+	double			julia_cy;
 };
 
 
@@ -188,7 +188,7 @@ int				key_hook(int keycode, t_data *d);
 */
 
 void			draw(t_data *d);
-void			color_pixel(t_img *d, int color, int x, int y);
+void			color_pixel(t_img *d, unsigned int color, int x, int y);
 unsigned int	get_img_color(t_data *d, double it, int max_i);
 
 /*
@@ -201,7 +201,8 @@ void			update_zoom(t_data *d);
 *******************FRAC
 */
 
-int			burnship(t_data *d, int x, int y, int maxit);
-int			newton(t_data *d, int x, int y, int maxit);
+void			key_frac(int keycode, t_data *d);
+int				burnship(t_data *d, int x, int y, int maxit);
+int				newton(t_data *d, int x, int y, int maxit);
 
 #endif

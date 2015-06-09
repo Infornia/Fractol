@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/09 17:29:11 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/09 21:14:23 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	main_frac(t_data *d)
 	init_images(d);
 	init_frac(d);
 	init_variables(d);
-	d->current_frac = 0;
-	d->current_pal = 0;
 	mlx_hook(d->win, 2, 1, key_hook, d);
 	mlx_hook(d->win, 4, 4, mouse_hook, d);
 	mlx_hook(d->win, 6, 16, mouse_hook_move, d);
