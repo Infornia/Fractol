@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/01 21:51:24 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/09 17:29:11 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	main_frac(t_data *d)
 {
-	init_frac(d);
+	init_mlx(d);
 	init_screen(&d->screen, d->mlx);
 	init_images(d);
-	//init_fractal_fun(d);
+	init_frac(d);
 	init_variables(d);
 	d->current_frac = 0;
 	d->current_pal = 0;
@@ -37,10 +37,11 @@ void	fractal_del(t_data *d)
 	i = -1;
 	while(d->screen.img && ++i < NB_PAL)
 		mlx_destroy_image(d->mlx, d->pals[i].img);
-	if (d->mlx)
-		free(d->mlx);
-	if (d->win)
-		free(d->win);
-	free(d);
 	exit(0);
+}
+
+void	init_frac(t_data *d)
+{
+	d->fractal[0] = &burnship;
+	d->fractal[1] = &newton;
 }

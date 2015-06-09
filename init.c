@@ -6,17 +6,14 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
-/*   Updated: 2015/05/13 20:00:36 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/03 13:41:19 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_frac(t_data *d)
+void	init_mlx(t_data *d)
 {
-	int		i;
-
-	i = 0;
 	d->color_mode = 0;
 	d->lr = X_WIN * 2 / 5;
 	d->ud = 200 + Y_WIN / 1000;

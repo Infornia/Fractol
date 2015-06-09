@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/01 21:39:37 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/03 14:11:36 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define Y_WIN 1111
 # define Y_HALF Y_WIN / 2
 # define X_HALF X_WIN / 2
-# define NB_FRACTAL 12
-# define NB_PAL 12
+# define NB_FRACTAL 2
+# define NB_PAL 7
 
 /*
 ** Textures
@@ -48,6 +48,7 @@
 **Colors
 */
 # define RED		0xFF0000
+# define GREEN		0x00FF00
 # define BLUE 		0x0000FF
 # define QUOISE		0x74BDF9
 # define GREEN 		0x00FF00
@@ -170,8 +171,9 @@ struct			s_data
 
 void			fractal_del(t_data *d);
 void			main_frac(t_data *d);
-void			init_frac(t_data *d);
+void			init_mlx(t_data *d);
 void			init_screen(t_img *d, void * mlx);
+void			init_frac(t_data *d);
 void			init_variables(t_data *d);
 void			init_images(t_data *d);
 void			init_julia(t_data *d, int x, int y);
@@ -196,10 +198,10 @@ unsigned int	get_img_color(t_data *d, double it, int max_i);
 void			update_zoom(t_data *d);
 
 /*
-*******************INUTILISE
+*******************FRAC
 */
 
-void			load_data(t_data *d);
-void			print_data(t_data *d);
+int			burnship(t_data *d, int x, int y, int maxit);
+int			newton(t_data *d, int x, int y, int maxit);
 
 #endif

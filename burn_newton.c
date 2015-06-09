@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/01 21:19:02 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/01 22:06:17 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/03 13:34:10 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ int			newton(t_data *d, int x, int y, int maxit)
 			break ;
 		}
 		d->u.old_zx = d->u.zx;
-		d->u.zx = (2.0 / 3.0) * d->u.zx + (d->u.zxx - d->d.zyy) / d->u.d;
+		d->u.zx = (2.0 / 3.0) * d->u.zx + (d->u.zxx - d->u.zyy) / d->u.d;
 		d->u.zy = (2.0 / 3.0) * d->u.zy - 2.0 * d->u.old_zx * d->u.zy / d->u.d;
 	}
 	if (d->u.zx > 0.0)
-		return ();
+		return (RED);
 	else if ((d->u.zx < -0.3) && (d->u.zy > 0.0))
-		return ()
-	return ();
+		return (GREEN);
+	return (BLUE);
 }
