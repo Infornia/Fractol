@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/09 21:24:35 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/10 18:23:06 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 **Parameters
 */
 
-# define X_WIN 2222
-# define Y_WIN 1111
+# define X_WIN 800
+# define Y_WIN 600
 # define Y_HALF Y_WIN / 2
 # define X_HALF X_WIN / 2
-# define NB_FRACTAL 2
+# define NB_FRACTAL 3
 # define NB_PAL 7
 
 /*
@@ -133,20 +133,14 @@ struct			s_data
 	t_img			pals[NB_PAL];
 	t_fractal		fractal[NB_FRACTAL];
 	t_util			u;
-	unsigned int	color;
-	int				color_mode;
-	int				projection_type;
-	int				draw_type;
-	int				lr;
-	int				ud;
 	int				current_pal;
 	int				current_frac;
 	int				click_x;
 	int				click_y;
+	int				move_x;
+	int				move_y;
 	double			mouse_x;
 	double			mouse_y;
-	double			move_x;
-	double			move_y;
 	double			c0x;
 	double			c0y;
 	double			zoom;
@@ -169,6 +163,7 @@ struct			s_data
 *******************INIT
 */
 
+t_data			*frac_data(void);
 void			fractal_del(t_data *d);
 void			main_frac(t_data *d);
 void			init_mlx(t_data *d);
@@ -189,7 +184,9 @@ int				key_hook(int keycode, t_data *d);
 
 void			draw(t_data *d);
 void			color_pixel(t_img *d, unsigned int color, int x, int y);
+void			key_frac(int keycode, t_data *d);
 unsigned int	get_img_color(t_data *d, double it, int max_i);
+unsigned int	create_color(int r, int g, int b);
 
 /*
 *******************MOVE
@@ -201,7 +198,7 @@ void			update_zoom(t_data *d);
 *******************FRAC
 */
 
-void			key_frac(int keycode, t_data *d);
+int				mandelbrot(t_data *d, int x, int y, int maxit);
 int				burnship(t_data *d, int x, int y, int maxit);
 int				newton(t_data *d, int x, int y, int maxit);
 

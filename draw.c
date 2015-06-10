@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/09 17:42:50 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/10 17:27:43 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 unsigned int	get_img_color(t_data *d, double it, int max_i)
 {
-	unsigned	color;
-	int			i;
-	t_img		*img;
+	unsigned int	color;
+	int				i;
+	t_img			*img;
 
 	img = &d->pals[d->current_pal];
 	i = it / (double)max_i * (double)X_WIN;

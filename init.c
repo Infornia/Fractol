@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/09 21:15:19 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/10 16:09:48 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	init_mlx(t_data *d)
 {
-	d->color_mode = 0;
-	d->lr = X_WIN * 2 / 5;
-	d->ud = 200 + Y_WIN / 1000;
 	d->current_frac = 0;
 	d->current_pal = 0;
 	d->mlx = mlx_init();
@@ -27,7 +24,7 @@ void	init_screen(t_img *d, void *mlx)
 {
 	d->img = mlx_new_image(mlx, X_WIN, Y_WIN);
 	d->data_img = mlx_get_data_addr
-		(d->img, &(d->bpp), &(d->size), &(d->endian));
+		(d->img, &d->bpp, &d->size, &d->endian);
 	d->bpp /= 8;
 	d->max_size = d->size * Y_WIN + d->bpp * X_WIN;
 }

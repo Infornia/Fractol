@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/01 21:19:02 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/03 13:34:10 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/10 18:15:24 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int			burnship(t_data *d, int x, int y, int maxit)
 
 int			newton(t_data *d, int x, int y, int maxit)
 {
-	d->u.cx = 1.5 * (x - X_HALF) / d->zoom_w + d->os_x + 0.5;
-	d->u.cy = (y - Y_HALF) / d->zoom_h + d->os_y - 0.4;
+	d->u.cx = 1.5 * (x - X_HALF) / (d->zoom * X_HALF) + d->os_x;
+	d->u.cy = (y - Y_HALF) / (d->zoom * Y_HALF) + d->os_y;
 	d->u.zx = d->u.cx;
 	d->u.zy = d->u.cy;
 	d->u.i = 0;

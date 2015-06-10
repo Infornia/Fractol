@@ -6,13 +6,13 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2015/06/09 21:14:23 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/06/10 18:25:25 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	main_frac(t_data *d)
+void		main_frac(t_data *d)
 {
 	init_mlx(d);
 	init_screen(&d->screen, d->mlx);
@@ -25,7 +25,6 @@ void	main_frac(t_data *d)
 	mlx_expose_hook(d->win, expose_hook, d);
 	mlx_loop(d->mlx);
 }
-
 void	fractal_del(t_data *d)
 {
 	int		i;
@@ -40,6 +39,7 @@ void	fractal_del(t_data *d)
 
 void	init_frac(t_data *d)
 {
-	d->fractal[0] = &burnship;
+	d->fractal[0] = &mandelbrot;
 	d->fractal[1] = &newton;
+	d->fractal[2] = &burnship;
 }
