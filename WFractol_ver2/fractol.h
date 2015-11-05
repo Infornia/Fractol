@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/09/24 18:57:02 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/05 17:31:47 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define T_PAL4			"textures/pal4.xpm"
 # define T_PAL5			"textures/pal5.xpm"
 # define T_PAL6			"textures/pal6.xpm"
-/*
 
+/*
 **Colors
 */
 # define RED		0xFF0000
@@ -113,7 +113,7 @@ typedef struct	s_util
 
 }				t_util;
 
-typedef struct	s_img
+typedef struct	s_screen
 {
 	void		*img;
 	char		*data_img;	
@@ -123,14 +123,14 @@ typedef struct	s_img
 	int			max_size;
 	int			w;
 	int			h;
-}				t_img;
+}				t_screen;
 
 struct			s_data
 {
 	void			*mlx;
 	void			*win;
-	t_img			screen;
-	t_img			pals[NB_PAL];
+	t_screen		s;
+	t_screen		pals[NB_PAL];
 	t_fractal		fractal[NB_FRACTAL];
 	t_util			u;
 	int				current_pal;
@@ -167,7 +167,7 @@ t_data			*frac_data(void);
 void			fractal_del(t_data *d);
 t_data			*main_frac();
 void			init_mlx(t_data *d);
-void			init_screen(t_img *d, void * mlx);
+void			init_screen(t_screen *d, void * mlx);
 void			init_frac(t_data *d);
 void			init_variables(t_data *d);
 void			init_images(t_data *d);
@@ -183,9 +183,9 @@ int				key_hook(int keycode, t_data *d);
 */
 
 void			draw(t_data *d);
-void			color_pixel(t_img *d, unsigned int color, int x, int y);
+void			color_pixel(t_screen *d, unsigned int color, int x, int y);
 void			key_frac(int keycode, t_data *d);
-unsigned int	get_img_color(t_data *d, double it, int max_i);
+unsigned int	get_screen_color(t_data *d, double it, int max_i);
 unsigned int	create_color(int r, int g, int b);
 
 /*

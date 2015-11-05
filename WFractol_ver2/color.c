@@ -6,13 +6,13 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 20:08:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/09/24 19:27:10 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/05 18:02:31 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	color_pixel(t_img *d, unsigned int color, int x, int y)
+void	color_pixel(t_screen *d, unsigned int color, int x, int y)
 {
 	int	i;
 

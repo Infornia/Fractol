@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   hooks_help.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/08 20:08:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/09/24 19:27:10 by mwilk            ###   ########.fr       */
+/*   Created: 2015/05/08 19:03:53 by mwilk             #+#    #+#             */
+/*   Updated: 2015/06/10 14:33:16 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	color_pixel(t_img *d, unsigned int color, int x, int y)
+void	update_zoom(t_data *d)
 {
-	int	i;
+	double c0x;
+	double c0y;
 
-	i = x * d->bpp + y * d->size;
-	if (i > 0 && i < d->max_size)
-	{
-		d->data_img[i] = color;
-		d->data_img[i + 1] = (color >> 8);
-		d->data_img[i + 2] = (color >> 16);
-	}
-}
-
-unsigned int	create_color(int r, int g, int b)
-{
-	return (b + (g << 8) + (r << 16));
+	c0x = (d->c0x + d->os_x) / d->zoom;
+	c0y = (d->c0y + d->os_y) / d->zoom;
+	d->os_zoom_x += c0x - d->mouse_x * c0x * 2.0;
+	d->os_zoom_y += c0y - d->mouse_y * c0y * 2.0;
+	d->zoom_w = d->zoom * (double)X_HALF;
+	d->zoom_h = d->zoom * (double)Y_HALF;
 }
