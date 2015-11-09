@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/09/24 18:57:02 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/09 18:33:29 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
-# include "libft/includes/libft.h"
+# include "Libft/includes/libft.h"
 
 /*
 **Parameters
@@ -69,8 +69,6 @@
 # define LEFT		123
 # define RIGHT		124
 # define TAB		48
-# define PLUS		69
-# define MINUS		78
 # define SHIFT		257
 # define ZOOM_IN	24
 # define ZOOM_OUT	27
@@ -97,18 +95,15 @@ typedef struct	s_key
 
 typedef struct	s_util
 {
-	double		old_zy;
-	double		old_zx;
-	double		cx;
-	double		cy;
-	double		zx;
-	double		zxx;
-	double		zy;
-	double		zyy;
-	double		d;
-	double		cld;
-	int			cln;
-	int			last_iter;
+	float		old_RZ;
+	float		old_IZ;
+	float		RC;
+	float		IC;
+	float		RZ;
+	float		IZ;
+	float		zxx;
+	float		zyy;
+	float		d;
 	int			i;
 
 }				t_util;
@@ -139,19 +134,19 @@ struct			s_data
 	int				click_y;
 	int				move_x;
 	int				move_y;
-	double			mouse_x;
-	double			mouse_y;
-	double			c0x;
-	double			c0y;
-	double			zoom;
-	double			zoom_w;
-	double			zoom_h;
-	double			os_x;
-	double			os_y;
-	double			os_zoom_x;
-	double			os_zoom_y;
-	double			julia_cx;
-	double			julia_cy;
+	float			mouse_x;
+	float			mouse_y;
+	float			c0x;
+	float			c0y;
+	float			zoom;
+	float			zoom_w;
+	float			zoom_h;
+	float			os_x;
+	float			os_y;
+	float			os_zoom_x;
+	float			os_zoom_y;
+	float			julia_cx;
+	float			julia_cy;
 };
 
 
@@ -185,7 +180,7 @@ int				key_hook(int keycode, t_data *d);
 void			draw(t_data *d);
 void			color_pixel(t_img *d, unsigned int color, int x, int y);
 void			key_frac(int keycode, t_data *d);
-unsigned int	get_img_color(t_data *d, double it, int max_i);
+unsigned int	get_img_color(t_data *d, float it, int max_i);
 unsigned int	create_color(int r, int g, int b);
 
 /*

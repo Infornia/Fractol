@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:13:30 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/05 18:22:13 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/09 18:02:12 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		expose_hook(t_data *d)
 
 int		key_hook(int keycode, t_data *d)
 {
+	printf("%i\n", keycode);
 	if (keycode == ESC)
 		fractal_del(d);
 	else if (keycode == LEFT)
@@ -61,8 +62,8 @@ int			mouse_hook_move(int x, int y, t_data *d)
 {
 	d->move_x = x;
 	d->move_y = y;
-	d->mouse_x = x / (double)X_WIN;
-	d->mouse_y = y / (double)Y_WIN;
+	d->mouse_x = x / (float)X_WIN;
+	d->mouse_y = y / (float)Y_WIN;
 	d->julia_cx = -0.8 + d->mouse_x * 1.1;
 	d->julia_cy = 0.3 - d->mouse_y * 0.32;
 	if (x % 5 == 0 || y % 5 == 0)
@@ -78,12 +79,12 @@ void		key_frac(int keycode, t_data *d)
 		if (d->current_frac < 0)
 			d->current_frac = NB_FRACTAL - 1;
 	}
-	else if (keycode == PLUS)
+	else if (keycode == ZOOM_IN)
 	{
 		d->zoom += d->zoom * 0.1f;
 		update_zoom(d);
 	}
-	else if (keycode == MINUS)
+	else if (keycode == ZOOM_OUT)
 	{
 		d->zoom -= d->zoom * 0.1f;
 		update_zoom(d);

@@ -6,12 +6,12 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/11/05 17:59:12 by mwilk            ###   ########.fr        #
+#    Updated: 2015/11/09 14:29:14 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = fdf
+NAME = fractol
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

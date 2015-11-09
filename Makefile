@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/06/10 17:33:35 by mwilk            ###   ########.fr        #
+#    Updated: 2015/11/06 16:19:32 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,8 +60,6 @@ fcleanlib:
 normal: $(NAME)
 
 $(NAME):
-	@make -C libft/ fclean
-	@make -C libft/
 #	@make -C minilibx/ clean
 #	@make -C minilibx/
 	@gcc -g $(CFLAGS) $(LIB_H) $(FDF_H) $(MLX_H) -c $(SRCS) 

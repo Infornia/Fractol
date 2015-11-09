@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/05 16:32:24 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/05 21:28:00 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/09 18:40:26 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	draw(t_data *d)
 	zoom_x = X_WIN / (Mx - mx);
 	zoom_y = Y_WIN / (My - my);
 	max_i = sqrt(ABS(2 * sqrt(ABS(1 - sqrt(5 * zoom_x))))) * 66.5;
-
 	for (x = 0; x < X_WIN; x++)
 	{
 		for (y = 0; y < Y_WIN; y++)
@@ -57,7 +56,7 @@ void	draw(t_data *d)
 			if (i == 255)
 				color_pixel(&d->s, BLACK, x, y);
 			else
-				color_pixel(&d->s, RGB(x % 255, y % 255, i * 255 / max_i), x, y);
+				color_pixel(&d->s, RGB(0, 0, i * 255 / max_i), x, y);
 		}
 	}
 }
