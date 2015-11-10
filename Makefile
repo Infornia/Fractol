@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/11/06 16:19:32 by mwilk            ###   ########.fr        #
+#    Updated: 2015/11/10 15:05:20 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,8 @@ LIB_H = -I Libft/includes/
 LIB_L = -LLibft -lft
 
 MLX_H = -I minilibx/
-#MLX_L = -L minilibx/ -lmlx -framework OpenGl -framework Appkit
-MLX_L = -L /usr/local/lib/ -lmlx -lm -framework OpenGl -framework Appkit
+MLX_L = -L minilibx/ -lmlx -framework OpenGl -framework Appkit
+#MLX_L = -L /usr/local/lib/ -lmlx -lm -framework OpenGl -framework Appkit
 
 all: makelib normal
 
@@ -57,11 +57,11 @@ cleanlib:
 fcleanlib:
 		@make -C libft fclean
 
-normal: $(NAME)
+normal: clean $(NAME)
 
 $(NAME):
-#	@make -C minilibx/ clean
-#	@make -C minilibx/
+	@make -C minilibx/ clean
+	@make -C minilibx/
 	@gcc -g $(CFLAGS) $(LIB_H) $(FDF_H) $(MLX_H) -c $(SRCS) 
 	@mkdir $(OBJ_PATH)
 	@gcc -o $(NAME) $(OBJ) $(LIB_L) $(MLX_L)
