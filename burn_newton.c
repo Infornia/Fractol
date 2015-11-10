@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/01 21:19:02 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/09 18:25:01 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/10 18:27:05 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int			newton(t_data *d, int x, int y, int maxit)
 		d->u.IZ = (2.0 / 3.0) * d->u.IZ - 2.0 * d->u.old_RZ * d->u.IZ / d->u.d;
 	}
 	if (d->u.RZ > 0.0)
-		return (RED);
+		return (RGB(255, 0, 0));
 	else if ((d->u.RZ < -0.3) && (d->u.IZ > 0.0))
-		return (GREEN);
-	return (BLUE);
+		return (RGB(0, 255, 0));
+	return (RGB(0, 0, 255));
 }

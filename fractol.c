@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/09 18:12:16 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/10 19:40:58 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ void	init_frac(t_data *d)
 	d->fractal[0] = &mandelbrot;
 	d->fractal[1] = &newton;
 	d->fractal[2] = &burnship;
+	d->fractal[3] = &julia;
 }

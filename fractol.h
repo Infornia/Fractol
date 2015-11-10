@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/09 18:33:29 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/10 19:46:21 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define Y_WIN 600
 # define Y_HALF Y_WIN / 2
 # define X_HALF X_WIN / 2
-# define NB_FRACTAL 3
+# define NB_FRACTAL 4
 # define NB_PAL 7
 
 /*
@@ -72,8 +72,8 @@
 # define SHIFT		257
 # define ZOOM_IN	24
 # define ZOOM_OUT	27
-# define PEAK_UP	30
-# define PEAK_DOWN	33
+# define IT_UP	30
+# define IT_DOWN	33
 # define RESET		29
 # define KEY1		18
 # define KEY2		19
@@ -128,6 +128,7 @@ struct			s_data
 	t_img			pals[NB_PAL];
 	t_fractal		fractal[NB_FRACTAL];
 	t_util			u;
+	int				it;
 	int				current_pal;
 	int				current_frac;
 	int				click_x;
@@ -158,6 +159,7 @@ struct			s_data
 *******************INIT
 */
 
+void			print_usage(int ac);
 t_data			*frac_data(void);
 void			fractal_del(t_data *d);
 t_data			*main_frac();
@@ -196,5 +198,6 @@ void			update_zoom(t_data *d);
 int				mandelbrot(t_data *d, int x, int y, int maxit);
 int				burnship(t_data *d, int x, int y, int maxit);
 int				newton(t_data *d, int x, int y, int maxit);
+int				julia(t_data *d, int x, int y, int maxit);
 
 #endif

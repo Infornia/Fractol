@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/09 19:51:28 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/10 17:11:23 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ void			draw(t_data *d)
 	int		x;
 	int		y;
 
-	max_i = sqrt(ABS(2 * sqrt(ABS(1 - sqrt(5 * d->zoom))))) * 25;
+	max_i = sqrt(ABS(2 * sqrt(ABS(1 - sqrt(5 * d->zoom))))) * 66.5 + d->it;
+	max_i = max_i > 480 ? 480 : max_i;
+	d->it = d->it >= max_i ? max_i  : d->it;
 	printf("%i\n", max_i);
 	x = 0;
 	while (x < X_WIN)
