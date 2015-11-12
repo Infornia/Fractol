@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:13:30 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/10 15:59:36 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/12 17:33:24 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int		expose_hook(t_data *d)
 {
-	draw(d);
+	if (d->current_frac != 6)
+		draw(d);
+	else
+		draw_tree(d);
 	mlx_do_sync(d->mlx);
 	mlx_put_image_to_window(d->mlx, d->win, d->screen.img, 0, 0);
 	return (0);

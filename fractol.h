@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/12 12:23:27 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/12 15:30:05 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define Y_WIN 600
 # define Y_HALF Y_WIN / 2
 # define X_HALF X_WIN / 2
-# define NB_FRACTAL 6
+# define NB_FRACTAL 7
 # define NB_PAL 7
 
 /*
@@ -93,6 +93,12 @@ typedef struct	s_key
 	void		(*event)(t_data *d);
 }				t_key;
 
+typedef struct	s_coor
+{
+	int	x;
+	int	y;
+}				t_coor;
+
 typedef struct	s_util
 {
 	float		old_RZ;
@@ -105,7 +111,6 @@ typedef struct	s_util
 	float		zyy;
 	float		d;
 	int			i;
-
 }				t_util;
 
 typedef struct	s_img
@@ -180,6 +185,7 @@ int				key_hook(int keycode, t_data *d);
 */
 
 void			draw(t_data *d);
+void			draw_tree(t_data *d);
 void			color_pixel(t_img *d, unsigned int color, int x, int y);
 void			key_frac(int keycode, t_data *d);
 unsigned int	get_img_color(t_data *d, float it, int max_i);
@@ -195,11 +201,12 @@ void			update_zoom(t_data *d);
 *******************FRAC
 */
 
-int				mandelbrot(t_data *d, int x, int y, int maxit);
-int				mandelbrot_special(t_data *d, int x, int y, int maxit);
-int				burnship(t_data *d, int x, int y, int maxit);
-int				newton(t_data *d, int x, int y, int maxit);
-int				julia(t_data *d, int x, int y, int maxit);
-int				julia_special(t_data *d, int x, int y, int maxit);
+int				mandelbrot(t_data *d, int x, int y, int max_i);
+int				mandelbrot_special(t_data *d, int x, int y, int max_i);
+int				burnship(t_data *d, int x, int y, int max_i);
+int				newton(t_data *d, int x, int y, int max_i);
+int				julia(t_data *d, int x, int y, int max_i);
+int				julia_special(t_data *d, int x, int y, int max_i);
+void			fractree(t_data *d, t_coor c, double a, int max_i);
 
 #endif

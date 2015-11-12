@@ -6,11 +6,31 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 20:08:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/09/24 19:27:10 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/12 13:55:23 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+unsigned int	get_img_color(t_data *d, float it, int max_i)
+{
+	unsigned int	color;
+	int				i;
+	t_img			*img;
+
+	img = &d->pals[d->current_pal];
+	i = it / (float)max_i * (float)img->w;
+	i *= img->bpp;
+	if (i > 0 && i < img->max_size)
+	{
+		color = img->data_img[i];
+		color += img->data_img[i + 1] << 8;
+		color += img->data_img[i + 2] << 16;
+	}
+	else
+		color = 0;
+	return (color);
+}
 
 void	color_pixel(t_img *d, unsigned int color, int x, int y)
 {
