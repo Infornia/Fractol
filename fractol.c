@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/10 19:40:58 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/12 12:22:22 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ void	fractal_del(t_data *d)
 void	init_frac(t_data *d)
 {
 	d->fractal[0] = &mandelbrot;
-	d->fractal[1] = &newton;
-	d->fractal[2] = &burnship;
-	d->fractal[3] = &julia;
+	d->fractal[1] = &mandelbrot_special;
+	d->fractal[2] = &newton;
+	d->fractal[3] = &burnship;
+	d->fractal[4] = &julia;
+	d->fractal[5] = &julia_special;
 }
