@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 17:03:07 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/20 20:55:52 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 **Parameters
 */
 
-# define X_WIN 1600
-# define Y_WIN 900
+# define X_WIN 800
+# define Y_WIN 494
 # define Y_HALF Y_WIN / 2
 # define X_HALF X_WIN / 2
 # define NB_FRACTAL 7

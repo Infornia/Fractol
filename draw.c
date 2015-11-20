@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 17:06:03 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/20 21:08:44 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void			draw_tree(t_data *d)
 	t_coor	c;
 
 	ft_bzero(d->screen.data_img, X_WIN * Y_WIN * 4);
-	max_i = 12 + d->it;
+	d->it = d->it >= 4 ? 4 : d->it;
+	max_i = 11 + d->it;
 	c.x = X_HALF - d->zoom / 4.1;
 	c.y = Y_WIN - 20 + d->zoom / 1.2;
 	d->tree_color_opt = d->current_pal % NB_TREE_COLORS;

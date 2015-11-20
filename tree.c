@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 18:30:04 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 17:20:24 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/20 21:20:16 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int tree_color(t_data *d, int opt, t_coor s, int i)
 	if (opt == 4)
 		printf("%i, %i\n", WHITE, BLACK);
 	if (opt == 5)
-		color = get_r_color(RED / Y_WIN * s.y);
+		color = get_r_color(RED / Y_WIN * d->rainbow * s.y);
 	printf("%i, %i\n", d->rainbow, color);
 	return (color);
 }
