@@ -6,11 +6,32 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 18:30:04 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 15:10:17 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/20 17:20:24 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static int tree_color(t_data *d, int opt, t_coor s, int i)
+{
+	int color;
+
+//	printf("The option: %i\n", opt);
+	if (opt == 0)
+		color = 16777215;
+	if (opt == 1)
+		color = get_r_color(d->rainbow * 0.09);
+	if (opt == 2)
+		color = RED;
+	if (opt == 3)
+		color = i - log(log(s.x + s.y) / log(2));
+	if (opt == 4)
+		printf("%i, %i\n", WHITE, BLACK);
+	if (opt == 5)
+		color = get_r_color(RED / Y_WIN * s.y);
+	printf("%i, %i\n", d->rainbow, color);
+	return (color);
+}
 
 static void	put_line(t_data *d, t_coor s, t_coor e, int color)
 {
@@ -20,7 +41,6 @@ static void	put_line(t_data *d, t_coor s, t_coor e, int color)
 	double	x;
 	double	y;
 
-	(void)color;
 	x = s.x;
 	y = s.y;
 	dx = e.x - s.x;
@@ -30,8 +50,7 @@ static void	put_line(t_data *d, t_coor s, t_coor e, int color)
 	dy = dy / dd;
 	while (dd-- >= 0)
 	{
-//		color = i + 1 - log(log(e.x + e.y) / log(2));
-		color_pixel(&d->screen, RED, x, y);
+		color_pixel(&d->screen, color, x, y);
 		x += dx;
 		y += dy;
 	}
@@ -44,11 +63,9 @@ void	fractree(t_data *d, t_coor s, double a, int i)
 
 	if (i > 0)
 	{
-//		printf("OUI Le x: %i, Le y: %i\n", c.x, c.y);
 		e.x = s.x + (cos(a) * i * 6) * d->zoom;
 		e.y = s.y + (sin(a) * i * 9) * d->zoom;
-//		printf("pre While, The dx: %f, The dy: %f The dd %f\n", dx, dy, dd);
-		put_line(d, s, e, RED);
+		put_line(d, s, e, tree_color(d, d->tree_color_opt, s, i));
 		fractree(d, e, a - (M_PI / 8 * d->mouse_y * 2), i - 1);
 		fractree(d, e, a + (M_PI / 8 * d->mouse_x * 2), i - 1);
 	}

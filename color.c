@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 20:08:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/12 13:55:23 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/20 16:45:20 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,12 @@ void	color_pixel(t_img *d, unsigned int color, int x, int y)
 unsigned int	create_color(int r, int g, int b)
 {
 	return (b + (g << 8) + (r << 16));
+}
+
+int		get_r_color(float t)
+{
+    return (RGB(
+                127.5 * (cos(t) + 1),
+                127.5 * (sin(t) + 1),
+                127.5 * (1 - cos(t))));
 }

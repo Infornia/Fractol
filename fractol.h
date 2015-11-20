@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/12 15:30:05 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/20 17:03:07 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@
 **Parameters
 */
 
-# define X_WIN 800
-# define Y_WIN 600
+# define X_WIN 1600
+# define Y_WIN 900
 # define Y_HALF Y_WIN / 2
 # define X_HALF X_WIN / 2
 # define NB_FRACTAL 7
 # define NB_PAL 7
+# define NB_TREE_COLORS 6
 
 /*
 ** Textures
@@ -77,6 +78,7 @@
 # define RESET		29
 # define KEY1		18
 # define KEY2		19
+# define KEYR		15
 # define ZOOM_IN_M	5
 # define ZOOM_OUT_M	4
 
@@ -134,6 +136,8 @@ struct			s_data
 	t_fractal		fractal[NB_FRACTAL];
 	t_util			u;
 	int				it;
+	int				tree_color_opt;
+	int				rainbow;
 	int				current_pal;
 	int				current_frac;
 	int				click_x;
@@ -189,6 +193,7 @@ void			draw_tree(t_data *d);
 void			color_pixel(t_img *d, unsigned int color, int x, int y);
 void			key_frac(int keycode, t_data *d);
 unsigned int	get_img_color(t_data *d, float it, int max_i);
+int				get_r_color(float t);
 unsigned int	create_color(int r, int g, int b);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:13:30 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 15:10:32 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/20 17:30:35 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		key_hook(int keycode, t_data *d)
 		init_variables(d);
 	else if (keycode == TAB)
 		d->current_frac = (d->current_frac + 1) % NB_FRACTAL;
+	else if (keycode == SHIFT)
+		d->current_frac = (d->current_frac - 1) % NB_FRACTAL;
 	key_frac(keycode, d);
 	expose_hook(d);
 	return (0);
@@ -96,12 +98,14 @@ void		key_frac(int keycode, t_data *d)
 		d->zoom -= d->zoom * 0.1f;
 		update_zoom(d);
 	}
-	else if (keycode == KEY1)
-		d->current_pal = (d->current_pal + 1) % NB_PAL;
 	else if (keycode == KEY2)
+		d->current_pal = (d->current_pal + 1) % NB_PAL;
+	else if (keycode == KEY1)
 	{
 		d->current_pal--;
 		if (d->current_pal < 0)
 			d->current_pal = NB_PAL - 1;
 	}
+	if (keycode == KEYR)
+		d->rainbow = d->rainbow % 70 + 1;
 }
