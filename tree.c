@@ -6,30 +6,40 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 18:30:04 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 21:20:16 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/21 19:40:39 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+void			display_for_tree(t_data *d, int opt)
+{
+	if (opt == 0 || opt == 4)
+	{
+		mlx_string_put(d->mlx, d->win, 10, 10, RED, ft_itoa(d->r));
+		mlx_string_put(d->mlx, d->win, 10, 30, GREEN, ft_itoa(d->g));
+		mlx_string_put(d->mlx, d->win, 10, 50, QUOISE, ft_itoa(d->b));
+	}
+	else if (opt == 1 || opt == 5)
+		mlx_string_put(d->mlx, d->win, 10, 50, PINK, "press R bro !");
+}
+
 static int tree_color(t_data *d, int opt, t_coor s, int i)
 {
 	int color;
 
-//	printf("The option: %i\n", opt);
 	if (opt == 0)
-		color = 16777215;
+		color = RGB(d->r, d->g, d->b);
 	if (opt == 1)
 		color = get_r_color(d->rainbow * 0.09);
 	if (opt == 2)
-		color = RED;
+		color = RGB(233 + i * 7, 105 + i * 7, 244 - i * 7);
 	if (opt == 3)
 		color = i - log(log(s.x + s.y) / log(2));
 	if (opt == 4)
-		printf("%i, %i\n", WHITE, BLACK);
+		color = RGB(50 + d->r + i * 7, d->g + i * 7, d->b + 150 - i * 7);
 	if (opt == 5)
 		color = get_r_color(RED / Y_WIN * d->rainbow * s.y);
-	printf("%i, %i\n", d->rainbow, color);
 	return (color);
 }
 

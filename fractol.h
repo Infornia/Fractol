@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 20:55:52 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/21 19:39:54 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 */
 
 # define X_WIN 800
-# define Y_WIN 494
+# define Y_WIN 600
 # define Y_HALF Y_WIN / 2
 # define X_HALF X_WIN / 2
 # define NB_FRACTAL 7
@@ -78,6 +78,12 @@
 # define RESET		29
 # define KEY1		18
 # define KEY2		19
+# define NUM1		83
+# define NUM2		84
+# define NUM3		85
+# define NUM4		86
+# define NUM5		87
+# define NUM6		88
 # define KEYR		15
 # define ZOOM_IN_M	5
 # define ZOOM_OUT_M	4
@@ -136,10 +142,16 @@ struct			s_data
 	t_fractal		fractal[NB_FRACTAL];
 	t_util			u;
 	int				it;
-	int				tree_color_opt;
+
 	int				rainbow;
+	int				r;
+	int				g;
+	int				b;
+
 	int				current_pal;
 	int				current_frac;
+	int				tree_color_opt;
+
 	int				click_x;
 	int				click_y;
 	int				move_x;
@@ -179,10 +191,18 @@ void			init_variables(t_data *d);
 void			init_images(t_data *d);
 void			init_julia(t_data *d, int x, int y);
 void			init_mandelbrot(t_data *d, int x, int y);
+
+/*
+*******************HOOKS
+*/
+
 int				expose_hook(t_data *d);
 int				mouse_hook(int button, int x, int y, t_data *d);
 int				mouse_hook_move(int x, int y, t_data *d);
 int				key_hook(int keycode, t_data *d);
+void			hook_key_moves(t_data *d, int keycode);
+void			hook_key_fractal(t_data *d, int keycode);
+void			hook_key_colors(t_data *d, int keycode);
 
 /*
 *******************DRAW
@@ -190,8 +210,8 @@ int				key_hook(int keycode, t_data *d);
 
 void			draw(t_data *d);
 void			draw_tree(t_data *d);
+void			display_for_tree(t_data *d, int opt);
 void			color_pixel(t_img *d, unsigned int color, int x, int y);
-void			key_frac(int keycode, t_data *d);
 unsigned int	get_img_color(t_data *d, float it, int max_i);
 int				get_r_color(float t);
 unsigned int	create_color(int r, int g, int b);

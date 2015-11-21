@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 21:08:44 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/21 19:40:13 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void			draw(t_data *d)
 	ft_putnbr(ft_strlen(d->screen.data_img));
 	max_i = sqrt(ABS(2 * sqrt(ABS(1 - sqrt(5 * d->zoom))))) * 66.5 + d->it;
 	d->it = d->it >= max_i ? max_i  : d->it;
-//	printf("%i\n", max_i);
 	x = 0;
 	while (x < X_WIN)
 	{

@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:13:30 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 17:30:35 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/21 19:42:08 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int		expose_hook(t_data *d)
 		draw_tree(d);
 	mlx_do_sync(d->mlx);
 	mlx_put_image_to_window(d->mlx, d->win, d->screen.img, 0, 0);
+	if (d->current_frac == 6)
+		display_for_tree(d, d->tree_color_opt);
 	return (0);
 }
 
@@ -28,25 +30,11 @@ int		key_hook(int keycode, t_data *d)
 	printf("%i\n", keycode);
 	if (keycode == ESC)
 		fractal_del(d);
-	else if (keycode == LEFT)
-		d->os_x -= 0.1f / d->zoom;
-	else if (keycode == RIGHT)
-		d->os_x += 0.1f / d->zoom;
-	else if (keycode == UP)
-		d->os_y -= 0.1f / d->zoom;
-	else if (keycode == DOWN)
-		d->os_y += 0.1f / d->zoom;
-	else if (keycode == IT_UP)
-		d->it += 1;
-	else if (keycode == IT_DOWN)
-		d->it -= 1;
 	else if (keycode == RESET)
 		init_variables(d);
-	else if (keycode == TAB)
-		d->current_frac = (d->current_frac + 1) % NB_FRACTAL;
-	else if (keycode == SHIFT)
-		d->current_frac = (d->current_frac - 1) % NB_FRACTAL;
-	key_frac(keycode, d);
+	hook_key_moves(d, keycode);
+	hook_key_fractal(d, keycode);
+	hook_key_colors(d, keycode);
 	expose_hook(d);
 	return (0);
 }
@@ -75,37 +63,6 @@ int			mouse_hook_move(int x, int y, t_data *d)
 	d->mouse_y = (float)y / Y_WIN;
 	d->julia_cx = -0.8 + d->mouse_x * 1.1;
 	d->julia_cy = 0.3 - d->mouse_y * 0.32;
-	if (x % 5 == 0 || y % 5 == 0)
-		expose_hook(d);
+	expose_hook(d);
 	return (0);
-}
-
-void		key_frac(int keycode, t_data *d)
-{
-	if(keycode == SHIFT)
-	{
-		d->current_frac--;
-		if (d->current_frac < 0)
-			d->current_frac = NB_FRACTAL - 1;
-	}
-	else if (keycode == ZOOM_IN)
-	{
-		d->zoom += d->zoom * 0.1f;
-		update_zoom(d);
-	}
-	else if (keycode == ZOOM_OUT)
-	{
-		d->zoom -= d->zoom * 0.1f;
-		update_zoom(d);
-	}
-	else if (keycode == KEY2)
-		d->current_pal = (d->current_pal + 1) % NB_PAL;
-	else if (keycode == KEY1)
-	{
-		d->current_pal--;
-		if (d->current_pal < 0)
-			d->current_pal = NB_PAL - 1;
-	}
-	if (keycode == KEYR)
-		d->rainbow = d->rainbow % 70 + 1;
 }
