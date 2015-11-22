@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/21 19:39:54 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/22 18:22:34 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,8 +183,8 @@ struct			s_data
 void			print_usage(int ac);
 t_data			*frac_data(void);
 void			fractal_del(t_data *d);
-t_data			*main_frac();
-void			init_mlx(t_data *d);
+t_data			*main_frac(int n);
+void			init_mlx(t_data *d, int n);
 void			init_screen(t_img *d, void * mlx);
 void			init_frac(t_data *d);
 void			init_variables(t_data *d);

@@ -6,19 +6,19 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/12 16:00:47 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/22 18:21:18 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_data		*main_frac(void)
+t_data		*main_frac(int frac_number)
 {
 	t_data		*d;
 
 	if (!(d = (t_data *)malloc(sizeof(t_data))))
 		return (NULL);
-	init_mlx(d);
+	init_mlx(d, frac_number);
 	init_screen(&d->screen, d->mlx);
 	init_images(d);
 	init_frac(d);

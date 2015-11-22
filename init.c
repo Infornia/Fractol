@@ -6,15 +6,15 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/21 16:26:57 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/22 18:25:12 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	init_mlx(t_data *d)
+void	init_mlx(t_data *d, int n)
 {
-	d->current_frac = 0;
+	d->current_frac = n <= 6 ? n : 0;
 	d->current_pal = 0;
 	d->mlx = mlx_init();
 	d->win = mlx_new_window (d->mlx, X_WIN, Y_WIN, "Fract'ol");

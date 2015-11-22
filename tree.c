@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 18:30:04 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/21 19:40:39 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/22 17:56:52 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ void			display_for_tree(t_data *d, int opt)
 {
 	if (opt == 0 || opt == 4)
 	{
+		mlx_string_put(d->mlx, d->win, 50, 10, RED, "+/- NUM 4/1");
+		mlx_string_put(d->mlx, d->win, 50, 30, GREEN, "+/- NUM 5/2");
+		mlx_string_put(d->mlx, d->win, 50, 50, QUOISE, "+/- NUM 6/3");
 		mlx_string_put(d->mlx, d->win, 10, 10, RED, ft_itoa(d->r));
 		mlx_string_put(d->mlx, d->win, 10, 30, GREEN, ft_itoa(d->g));
 		mlx_string_put(d->mlx, d->win, 10, 50, QUOISE, ft_itoa(d->b));
 	}
 	else if (opt == 1 || opt == 5)
-		mlx_string_put(d->mlx, d->win, 10, 50, PINK, "press R bro !");
+		mlx_string_put(d->mlx, d->win, 10, 10, PINK, "press R bro !");
 }
 
 static int tree_color(t_data *d, int opt, t_coor s, int i)

@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:48:12 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/12 18:02:57 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/22 18:55:47 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int		main(int ac, char **av)
 	t_data	*d;
 
 	(void)av;
-	print_usage(ac);
-	if (ac == 1)
+	if (ac == 2 && ft_isdigit(av[1][0]) && !av[1][1])
 	{
-		if(!(d = main_frac()))
+		print_usage(ac);
+		if(!(d = main_frac(ft_atoi(av[1]))))
 			return (1);
 		mlx_hook(d->win, 2, 1, key_hook, d);
 		mlx_hook(d->win, 4, 4, mouse_hook, d);
@@ -28,5 +28,7 @@ int		main(int ac, char **av)
 		mlx_expose_hook(d->win, expose_hook, d);
 		mlx_loop(d->mlx);
 	}
+	else
+		print_usage(1);
 	return (0);
 }

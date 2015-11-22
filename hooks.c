@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:13:30 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/21 19:42:08 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/22 19:03:55 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		mouse_hook(int button, int x, int y, t_data *d)
 	return (0);
 }
 
-int			mouse_hook_move(int x, int y, t_data *d)
+int		mouse_hook_move(int x, int y, t_data *d)
 {
 	d->move_x = x;
 	d->move_y = y;
