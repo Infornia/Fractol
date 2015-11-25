@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/22 18:25:12 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/25 13:40:32 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_mlx(t_data *d, int n)
 {
-	d->current_frac = n <= 6 ? n : 0;
+	d->current_frac = n <= NB_FRACTAL - 1 ? n : 0;
 	d->current_pal = 0;
 	d->mlx = mlx_init();
 	d->win = mlx_new_window (d->mlx, X_WIN, Y_WIN, "Fract'ol");

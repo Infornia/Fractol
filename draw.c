@@ -6,12 +6,23 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/22 18:56:55 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/25 18:44:18 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include <math.h>
+
+void			draw_triangle(t_data *d)
+{
+	int		max_i;
+
+	ft_bzero(d->screen.data_img, X_WIN * Y_WIN * 4);
+	d->it = d->it >= 10 ? 10 : d->it;
+	max_i = 1 + d->it;
+	fractriangle(d, 0, 300, max_i);
+	ft_puts("");
+}
 
 void			draw_tree(t_data *d)
 {
@@ -19,7 +30,7 @@ void			draw_tree(t_data *d)
 	t_coor	c;
 
 	ft_bzero(d->screen.data_img, X_WIN * Y_WIN * 4);
-	d->it = d->it >= 4 ? 4 : d->it;
+	d->it = d->it >= 10 ? 10 : d->it;
 	max_i = 11 + d->it;
 	c.x = X_HALF - d->zoom / 4.1;
 	c.y = Y_WIN - 20 + d->zoom / 1.2;

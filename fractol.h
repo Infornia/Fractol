@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/22 18:22:34 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/25 18:11:14 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # define Y_WIN 600
 # define Y_HALF Y_WIN / 2
 # define X_HALF X_WIN / 2
-# define NB_FRACTAL 7
+# define NB_FRACTAL 8
 # define NB_PAL 7
-# define NB_TREE_COLORS 6
+# define NB_TREE_COLORS 7
 
 /*
 ** Textures
@@ -210,6 +210,7 @@ void			hook_key_colors(t_data *d, int keycode);
 
 void			draw(t_data *d);
 void			draw_tree(t_data *d);
+void			draw_triangle(t_data *d);
 void			display_for_tree(t_data *d, int opt);
 void			color_pixel(t_img *d, unsigned int color, int x, int y);
 unsigned int	get_img_color(t_data *d, float it, int max_i);
@@ -233,5 +234,6 @@ int				newton(t_data *d, int x, int y, int max_i);
 int				julia(t_data *d, int x, int y, int max_i);
 int				julia_special(t_data *d, int x, int y, int max_i);
 void			fractree(t_data *d, t_coor c, double a, int max_i);
+void			fractriangle(t_data *d, int t, float h, int max_i);
 
 #endif

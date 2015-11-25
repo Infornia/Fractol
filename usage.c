@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 15:30:23 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/22 18:50:00 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/25 13:39:03 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void			print_usage(int ac)
 		ft_puts("\033[35m\t3 = Burning ship \033[0m");
 		ft_puts("\033[35m\t4,5 = Julia \033[0m");
 		ft_puts("\033[35m\t6 = Tree \033[0m");
+		ft_puts("\033[35m\t7 = Sierpinski \033[0m");
 		return ;
 	}
 	else
