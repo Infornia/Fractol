@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/25 18:11:14 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/27 21:27:42 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,15 @@ typedef struct	s_coor
 	int	x;
 	int	y;
 }				t_coor;
+
+typedef struct	s_triangle
+{
+	int	x;
+	int	y;
+	int	h;
+	int	d;
+	int	max_i;
+}				t_triangle;
 
 typedef struct	s_util
 {
@@ -234,6 +243,6 @@ int				newton(t_data *d, int x, int y, int max_i);
 int				julia(t_data *d, int x, int y, int max_i);
 int				julia_special(t_data *d, int x, int y, int max_i);
 void			fractree(t_data *d, t_coor c, double a, int max_i);
-void			fractriangle(t_data *d, int t, float h, int max_i);
+void			fractriangle(t_data *d, t_coor c, float h, int max_i);
 
 #endif

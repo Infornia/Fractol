@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/25 18:44:18 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/28 13:59:14 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 void			draw_triangle(t_data *d)
 {
 	int		max_i;
+	t_coor		c;
 
 	ft_bzero(d->screen.data_img, X_WIN * Y_WIN * 4);
 	d->it = d->it >= 10 ? 10 : d->it;
 	max_i = 1 + d->it;
-	fractriangle(d, 0, 300, max_i);
+	c.x = X_HALF;
+	c.y = Y_HALF / 6;
+	fractriangle(d, c, 400, max_i);
 	ft_puts("");
 }
 
