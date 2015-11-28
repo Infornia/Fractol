@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/28 15:19:06 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/28 19:49:38 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define NB_PAL 7
 # define NB_TREE_COLORS 7
 # define NB_TRI_COLORS 7
+# define NB_TRI_OPT 3
 
 /*
 ** Textures
@@ -76,6 +77,8 @@
 # define ZOOM_OUT	27
 # define IT_UP	30
 # define IT_DOWN	33
+# define OPT_UP		39
+# define OPT_DOWN	41
 # define RESET		29
 # define KEY1		18
 # define KEY2		19
@@ -104,8 +107,8 @@ typedef struct	s_key
 
 typedef struct	s_coor
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }				t_coor;
 
 typedef struct	s_triangle
@@ -152,6 +155,7 @@ struct			s_data
 	t_fractal		fractal[NB_FRACTAL];
 	t_util			u;
 	int				it;
+	int				count;
 
 	int				rainbow;
 	int				r;
@@ -161,7 +165,8 @@ struct			s_data
 	int				current_pal;
 	int				current_frac;
 	int				tree_color_opt;
-	int				tri_color_opt;
+	unsigned int	tri_color_opt;
+	unsigned int	tri_opt;
 
 	int				click_x;
 	int				click_y;
@@ -222,7 +227,10 @@ void			hook_key_colors(t_data *d, int keycode);
 void			draw(t_data *d);
 void			draw_tree(t_data *d);
 void			draw_triangle(t_data *d);
-void			display_for_tree(t_data *d, int opt);
+
+void			display_for_tree(t_data *d, int opt, int opt2);
+t_coor			option_tri(t_data *d, t_coor c);
+
 void			color_pixel(t_img *d, unsigned int color, int x, int y);
 unsigned int	get_img_color(t_data *d, float it, int max_i);
 int				get_r_color(float t);
@@ -245,6 +253,6 @@ int				newton(t_data *d, int x, int y, int max_i);
 int				julia(t_data *d, int x, int y, int max_i);
 int				julia_special(t_data *d, int x, int y, int max_i);
 void			fractree(t_data *d, t_coor c, double a, int max_i);
-void			fractriangle(t_data *d, t_coor c, float h, int max_i);
+void			fractriangle(t_data *d, t_coor c, double h, int max_i);
 
 #endif

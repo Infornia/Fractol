@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 19:03:53 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/21 19:13:18 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/28 20:01:07 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,24 @@ void	hook_key_fractal(t_data *d, int keycode)
 		d->it += 1;
 	else if (keycode == IT_DOWN)
 		d->it -= 1;
-	else if(keycode == SHIFT)
-	{
-		d->current_frac--;
-		if (d->current_frac < 0)
-			d->current_frac = NB_FRACTAL - 1;
-	}
+	else if (keycode == OPT_UP)
+		d->tri_opt = (d->tri_opt + 1) % NB_TRI_OPT;
+	else if (keycode == OPT_DOWN)
+		d->tri_opt = d->tri_opt < 1 ? NB_TRI_OPT : d->tri_opt - 1;
 	else if (keycode == TAB)
 		d->current_frac = (d->current_frac + 1) % NB_FRACTAL;
-	else if (keycode == SHIFT)
-		d->current_frac = (d->current_frac - 1) % NB_FRACTAL;
+	else if(keycode == SHIFT)
+		d->current_frac = d->current_frac < 1 ? NB_FRACTAL : d->current_frac - 1;
 	else if (keycode == ZOOM_IN)
 	{
 		d->zoom += d->zoom * 0.1f;
+		d->count += 1;
 		update_zoom(d);
 	}
 	else if (keycode == ZOOM_OUT)
 	{
 		d->zoom -= d->zoom * 0.1f;
+		d->count -= 1;
 		update_zoom(d);
 	}
 }

@@ -6,14 +6,16 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 18:30:04 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/25 12:56:42 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/28 17:01:00 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void			display_for_tree(t_data *d, int opt)
+void			display_for_tree(t_data *d, int opt, int opt2)
 {
+	if (opt2 != 0)
+		opt = opt2;
 	if (opt == 0 || opt == 4 || opt == 6)
 	{
 		mlx_string_put(d->mlx, d->win, 50, 10, RED, "+/- NUM 4/1");

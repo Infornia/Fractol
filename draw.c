@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/28 15:17:53 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/28 20:34:07 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ void			draw_triangle(t_data *d)
 	t_coor		c;
 
 	ft_bzero(d->screen.data_img, X_WIN * Y_WIN * 4);
-	max_i = sqrt(ABS(2 * sqrt(ABS(1 - sqrt(5 * d->zoom)))) * 11) + d->it;
-	c.x = X_HALF;
-	c.y = Y_HALF / 6;
+	max_i = 1 + d->count / 7 + d->it;
+	c = option_tri(d, c);
 	d->tri_color_opt = d->current_pal % NB_TRI_COLORS;
 	fractriangle(d, c, 400 + d->zoom * 22, max_i);
 }

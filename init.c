@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/25 13:40:32 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/28 20:03:08 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	init_screen(t_img *d, void *mlx)
 void	init_variables(t_data *d)
 {
 	d->it = 0;
+	d->count = 0;
 	d->rainbow = 36;
+	d->tri_color_opt = 0;
+	d->tri_opt = 0;
 	d->r = 255;
 	d->g = 255;
 	d->b = 255;
