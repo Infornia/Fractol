@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:13:30 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/25 13:33:19 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/28 15:23:46 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		expose_hook(t_data *d)
 		draw_triangle(d);
 	mlx_do_sync(d->mlx);
 	mlx_put_image_to_window(d->mlx, d->win, d->screen.img, 0, 0);
-	if (d->current_frac == 6)
+	if (d->current_frac == 6 || d->current_frac == 7)
 		display_for_tree(d, d->tree_color_opt);
 	return (0);
 }

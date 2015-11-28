@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/27 21:27:42 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/28 15:19:06 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define NB_FRACTAL 8
 # define NB_PAL 7
 # define NB_TREE_COLORS 7
+# define NB_TRI_COLORS 7
 
 /*
 ** Textures
@@ -160,6 +161,7 @@ struct			s_data
 	int				current_pal;
 	int				current_frac;
 	int				tree_color_opt;
+	int				tri_color_opt;
 
 	int				click_x;
 	int				click_y;
