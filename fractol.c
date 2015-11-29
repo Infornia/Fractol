@@ -6,13 +6,13 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/10 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/22 18:21:18 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/29 11:55:24 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_data		*main_frac(int frac_number)
+t_data	*main_frac(int frac_number)
 {
 	t_data		*d;
 
@@ -23,16 +23,17 @@ t_data		*main_frac(int frac_number)
 	init_images(d);
 	init_frac(d);
 	init_variables(d);
-	return(d);
+	return (d);
 }
+
 void	fractal_del(t_data *d)
 {
 	int		i;
 
-	if(!d)
+	if (!d)
 		return ;
 	i = -1;
-	while(d->screen.img && ++i < NB_PAL)
+	while (d->screen.img && ++i < NB_PAL)
 		mlx_destroy_image(d->mlx, d->pals[i].img);
 	free(d);
 	exit(0);

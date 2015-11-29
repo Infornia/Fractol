@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 19:03:53 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/28 20:01:07 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/29 12:07:49 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,15 @@ void	hook_key_colors(t_data *d, int keycode)
 	else if (keycode == NUM6)
 		d->b = d->b >= 255 ? 0 : d->b + 2;
 	else if (keycode == KEY2)
-		d->current_pal = (d->current_pal + 1) % NB_PAL;
+		d->cur_pal = (d->cur_pal + 1) % NB_PAL;
 	else if (keycode == KEY1)
 	{
-		d->current_pal--;
-		if (d->current_pal < 0)
-			d->current_pal = NB_PAL - 1;
+		d->cur_pal--;
+		if (d->cur_pal < 0)
+			d->cur_pal = NB_PAL - 1;
 	}
 	if (keycode == KEYR)
 		d->rainbow = d->rainbow % 70 + 1;
-
 }
 
 void	hook_key_fractal(t_data *d, int keycode)
@@ -75,9 +74,9 @@ void	hook_key_fractal(t_data *d, int keycode)
 	else if (keycode == OPT_DOWN)
 		d->tri_opt = d->tri_opt < 1 ? NB_TRI_OPT : d->tri_opt - 1;
 	else if (keycode == TAB)
-		d->current_frac = (d->current_frac + 1) % NB_FRACTAL;
-	else if(keycode == SHIFT)
-		d->current_frac = d->current_frac < 1 ? NB_FRACTAL : d->current_frac - 1;
+		d->cur_frac = (d->cur_frac + 1) % NB_FRACTAL;
+	else if (keycode == SHIFT)
+		d->cur_frac = d->cur_frac < 1 ? NB_FRACTAL : d->cur_frac - 1;
 	else if (keycode == ZOOM_IN)
 	{
 		d->zoom += d->zoom * 0.1f;

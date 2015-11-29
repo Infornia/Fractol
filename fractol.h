@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/28 19:49:38 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/29 12:00:20 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,8 @@ struct			s_data
 	int				g;
 	int				b;
 
-	int				current_pal;
-	int				current_frac;
+	int				cur_pal;
+	int				cur_frac;
 	int				tree_color_opt;
 	unsigned int	tri_color_opt;
 	unsigned int	tri_opt;

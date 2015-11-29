@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/01 21:19:02 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/10 18:27:05 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/29 11:56:22 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			burnship(t_data *d, int x, int y, int maxit)
 		d->u.RZ = d->u.RZ * d->u.RZ - d->u.IZ * d->u.IZ - d->u.RC;
 		d->u.IZ = 2 * fabs(d->u.IZ * d->u.old_RZ) + d->u.IC;
 		if (d->u.zxx + d->u.zyy > 4.0)
-			break;
+			break ;
 		d->u.i++;
 	}
 	if (d->u.i >= maxit)

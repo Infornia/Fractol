@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 20:08:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/20 16:45:20 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/29 12:04:12 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ unsigned int	get_img_color(t_data *d, float it, int max_i)
 	int				i;
 	t_img			*img;
 
-	img = &d->pals[d->current_pal];
+	img = &d->pals[d->cur_pal];
 	i = it / (float)max_i * (float)img->w;
 	i *= img->bpp;
 	if (i > 0 && i < img->max_size)
@@ -32,7 +32,7 @@ unsigned int	get_img_color(t_data *d, float it, int max_i)
 	return (color);
 }
 
-void	color_pixel(t_img *d, unsigned int color, int x, int y)
+void			color_pixel(t_img *d, unsigned int color, int x, int y)
 {
 	int	i;
 
@@ -50,10 +50,10 @@ unsigned int	create_color(int r, int g, int b)
 	return (b + (g << 8) + (r << 16));
 }
 
-int		get_r_color(float t)
+int				get_r_color(float t)
 {
-    return (RGB(
-                127.5 * (cos(t) + 1),
-                127.5 * (sin(t) + 1),
-                127.5 * (1 - cos(t))));
+	return (RGB(
+				127.5 * (cos(t) + 1),
+				127.5 * (sin(t) + 1),
+				127.5 * (1 - cos(t))));
 }

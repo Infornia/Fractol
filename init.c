@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/28 20:03:08 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/29 12:00:51 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 void	init_mlx(t_data *d, int n)
 {
-	d->current_frac = n <= NB_FRACTAL - 1 ? n : 0;
-	d->current_pal = 0;
+	d->cur_frac = n <= NB_FRACTAL - 1 ? n : 0;
+	d->cur_pal = 0;
 	d->mlx = mlx_init();
-	d->win = mlx_new_window (d->mlx, X_WIN, Y_WIN, "Fract'ol");
+	d->win = mlx_new_window(d->mlx, X_WIN, Y_WIN, "Fract'ol");
 }
 
 void	init_screen(t_img *d, void *mlx)
 {
 	d->img = mlx_new_image(mlx, X_WIN, Y_WIN);
-	d->data_img = mlx_get_data_addr
-		(d->img, &d->bpp, &d->size, &d->endian);
+	d->data_img = mlx_get_data_addr(d->img, &d->bpp, &d->size, &d->endian);
 	d->bpp /= 8;
 	d->max_size = d->size * Y_WIN + d->bpp * X_WIN;
 }

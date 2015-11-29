@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:48:12 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/22 18:55:47 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/11/29 11:57:22 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		main(int ac, char **av)
 	if (ac == 2 && ft_isdigit(av[1][0]) && !av[1][1])
 	{
 		print_usage(ac);
-		if(!(d = main_frac(ft_atoi(av[1]))))
+		if (!(d = main_frac(ft_atoi(av[1]))))
 			return (1);
 		mlx_hook(d->win, 2, 1, key_hook, d);
 		mlx_hook(d->win, 4, 4, mouse_hook, d);
