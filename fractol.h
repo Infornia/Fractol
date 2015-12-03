@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/29 12:00:20 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/03 19:32:08 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define NB_FRACTAL 8
 # define NB_PAL 7
 # define NB_TREE_COLORS 7
-# define NB_TRI_COLORS 7
+# define NB_TRI_COLORS 4
 # define NB_TRI_OPT 3
 
 /*
@@ -109,6 +109,7 @@ typedef struct	s_coor
 {
 	double	x;
 	double	y;
+	int		
 }				t_coor;
 
 typedef struct	s_triangle
@@ -228,13 +229,15 @@ void			draw(t_data *d);
 void			draw_tree(t_data *d);
 void			draw_triangle(t_data *d);
 
-void			display_for_tree(t_data *d, int opt, int opt2);
+void			display_for_tree(t_data *d, int opt);
+void			display_for_tri(t_data *d, int opt);
 t_coor			option_tri(t_data *d, t_coor c);
 
 void			color_pixel(t_img *d, unsigned int color, int x, int y);
 unsigned int	get_img_color(t_data *d, float it, int max_i);
 int				get_r_color(float t);
 unsigned int	create_color(int r, int g, int b);
+void			triangle_color(t_data *d, t_coor c, double h, int i);
 
 /*
 *******************MOVE

@@ -6,16 +6,14 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 18:30:04 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/28 17:01:00 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/01 16:07:29 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void			display_for_tree(t_data *d, int opt, int opt2)
+void		display_for_tree(t_data *d, int opt)
 {
-	if (opt2 != 0)
-		opt = opt2;
 	if (opt == 0 || opt == 4 || opt == 6)
 	{
 		mlx_string_put(d->mlx, d->win, 50, 10, RED, "+/- NUM 4/1");
@@ -29,7 +27,7 @@ void			display_for_tree(t_data *d, int opt, int opt2)
 		mlx_string_put(d->mlx, d->win, 10, 10, PINK, "press R bro !");
 }
 
-static int tree_color(t_data *d, int opt, t_coor s, int i)
+static int	tree_color(t_data *d, int opt, t_coor s, int i)
 {
 	int color;
 
@@ -71,7 +69,6 @@ static void	put_line(t_data *d, t_coor s, t_coor e, int color)
 		x += dx;
 		y += dy;
 	}
-
 }
 
 void	fractree(t_data *d, t_coor s, double a, int i)
