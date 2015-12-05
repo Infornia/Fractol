@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 20:08:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/03 19:01:09 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/05 21:50:03 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,4 @@ int				get_r_color(float t)
 				127.5 * (cos(t) + 1),
 				127.5 * (sin(t) + 1),
 				127.5 * (1 - cos(t))));
-}
-
-void			triangle_color(t_data *d, t_coor c, double h, int i)
-{
-	if (d->tri_opt == 2)
-		color_pixel(&d->screen, color, d->os_x * 22 + c.x + x * cos(d->mouse_x * 6),
-				d->os_y * 22 + c.y + y * sin(d->mouse_y * 9));
-	else
-		color_pixel(&d->screen, color * i, d->os_x * 22 + c.x + x,
-				d->os_y * 22 + c.y + y);
-
 }

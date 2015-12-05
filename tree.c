@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 18:30:04 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/01 16:07:29 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/05 21:51:50 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	put_line(t_data *d, t_coor s, t_coor e, int color)
 	}
 }
 
-void	fractree(t_data *d, t_coor s, double a, int i)
+void		fractree(t_data *d, t_coor s, double a, int i)
 {
 	t_coor	e;
 

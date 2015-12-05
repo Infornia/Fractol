@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/03 19:32:08 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/05 21:43:37 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@
 # define T_PAL4			"textures/pal4.xpm"
 # define T_PAL5			"textures/pal5.xpm"
 # define T_PAL6			"textures/pal6.xpm"
-/*
 
+/*
 **Colors
 */
 # define RED		0xFF0000
@@ -97,7 +97,7 @@
 */
 
 typedef struct s_data	t_data;
-typedef int				 (*t_fractal)(t_data *d, int x, int y, int mi);
+typedef int				(*t_fractal)(t_data *d, int x, int y, int mi);
 
 typedef struct	s_key
 {
@@ -109,7 +109,8 @@ typedef struct	s_coor
 {
 	double	x;
 	double	y;
-	int		
+	int		i;
+	int		j;
 }				t_coor;
 
 typedef struct	s_triangle

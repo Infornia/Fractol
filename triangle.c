@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 13:16:03 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/03 19:32:01 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/05 21:52:38 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,23 +72,27 @@ static void	triple_shot(t_data *d, t_coor c, double h, int max_i)
 
 void		fractriangle(t_data *d, t_coor c, double h, int max_i)
 {
-	int		x;
-	int		y;
 	int		color;
 
-	y = 0;
+	c.j = 0;
 	if (max_i == 1)
 	{
 		color = tri_color(d, d->tri_color_opt, c, max_i);
-		while (y < h && y < Y_WIN)
+		while (c.j < h && c.j < Y_WIN)
 		{
-			x = x < 0 ? 0 : -y / sqrt(3);
-			while (x <= y / sqrt(3) && x < X_WIN)
+			c.i = c.i < 0 ? 0 : -c.j / sqrt(3);
+			while (c.i <= c.j / sqrt(3) && c.i < X_WIN)
 			{
-				triangle_color();
-				x++;
+				if (d->tri_opt == 2)
+					color_pixel(&d->screen, color,
+							d->os_x * 22 + c.x + c.i * cos(d->mouse_x * 6),
+							d->os_y * 22 + c.y + c.j * sin(d->mouse_y * 9));
+				else
+					color_pixel(&d->screen, color * max_i,
+							d->os_x * 22 + c.x + c.i, d->os_y * 22 + c.y + c.j);
+				c.i++;
 			}
-			y++;
+			c.j++;
 		}
 	}
 	else if (max_i > 1 && c.x < X_WIN && c.y < Y_WIN)
