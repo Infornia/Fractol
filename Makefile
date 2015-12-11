@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/11/25 13:34:55 by mwilk            ###   ########.fr        #
+#    Updated: 2015/12/11 19:17:36 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ LIB_H = -I Libft/includes/
 LIB_L = -LLibft -lft
 
 MLX_H = -I minilibx/
+#MLX_H = -I usr/local/lib/
 MLX_L = -L minilibx/ -lmlx -framework OpenGl -framework Appkit
 #MLX_L = -L /usr/local/lib/ -lmlx -lm -framework OpenGl -framework Appkit
 
@@ -70,7 +71,7 @@ $(NAME):
 	@mkdir $(OBJ_PATH)
 	@gcc -o $(NAME) $(OBJ) $(LIB_L) $(MLX_L)
 	@mv $(OBJ) $(OBJ_PATH)
-	@echo "\033[35m <(O.O<) WOW ! Very Fdf ! Amaze ! (>^o^)> \033[0m"
+	@echo "\033[35m <(O.O<) WOW ! Very Fractol ! Amaze ! (>^o^)> \033[0m"
 
 clean:
 	@/bin/rm -rf $(OBJ_PATH)
