@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:13:30 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/11 21:55:30 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/11 22:52:05 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int		mouse_hook_move(int x, int y, t_data *d)
 {
 	d->move_x = x;
 	d->move_y = y;
-	d->mouse_x = (float)x / X_WIN;
-	d->mouse_y = (float)y / Y_WIN;
+	d->mouse_x = (double)x / X_WIN;
+	d->mouse_y = (double)y / Y_WIN;
 	d->julia_cx = -0.8 + d->mouse_x * 1.1;
 	d->julia_cy = 0.3 - d->mouse_y * 0.32;
 	expose_hook(d);

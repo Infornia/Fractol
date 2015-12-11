@@ -6,20 +6,20 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 20:08:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/07 14:48:06 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/11 22:52:05 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-unsigned int	get_img_color(t_data *d, float it, int max_i)
+unsigned int	get_img_color(t_data *d, double it, int max_i)
 {
 	unsigned int	color;
 	int				i;
 	t_img			*img;
 
 	img = &d->pals[d->cur_pal];
-	i = it / (float)max_i * (float)img->w;
+	i = it / (double)max_i * (double)img->w;
 	i *= img->bpp;
 	if (i > 0 && i < img->max_size)
 	{
@@ -50,7 +50,7 @@ unsigned int	create_color(int r, int g, int b)
 	return (b + (g << 8) + (r << 16));
 }
 
-int				get_r_color(float t)
+int				get_r_color(double t)
 {
 	return (RGB(
 				127.5 * (cos(t) + 1),

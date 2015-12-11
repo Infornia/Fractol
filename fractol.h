@@ -6,12 +6,12 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/11 15:42:54 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/05 21:43:37 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/11 22:55:14 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
 # include <stdio.h>
 # include <unistd.h>
@@ -124,22 +124,22 @@ typedef struct	s_triangle
 
 typedef struct	s_util
 {
-	float		old_RZ;
-	float		old_IZ;
-	float		RC;
-	float		IC;
-	float		RZ;
-	float		IZ;
-	float		zxx;
-	float		zyy;
-	float		d;
+	double		old_rz;
+	double		old_iz;
+	double		rc;
+	double		ic;
+	double		rz;
+	double		iz;
+	double		zxx;
+	double		zyy;
+	double		d;
 	int			i;
 }				t_util;
 
 typedef struct	s_img
 {
 	void		*img;
-	char		*data_img;	
+	char		*data_img;
 	int			bpp;
 	int			size;
 	int			endian;
@@ -174,21 +174,20 @@ struct			s_data
 	int				click_y;
 	int				move_x;
 	int				move_y;
-	float			mouse_x;
-	float			mouse_y;
-	float			c0x;
-	float			c0y;
-	float			zoom;
-	float			zoom_w;
-	float			zoom_h;
-	float			os_x;
-	float			os_y;
-	float			os_zoom_x;
-	float			os_zoom_y;
-	float			julia_cx;
-	float			julia_cy;
+	double			mouse_x;
+	double			mouse_y;
+	double			c0x;
+	double			c0y;
+	double			zoom;
+	double			zoom_w;
+	double			zoom_h;
+	double			os_x;
+	double			os_y;
+	double			os_zoom_x;
+	double			os_zoom_y;
+	double			julia_cx;
+	double			julia_cy;
 };
-
 
 /*
 **Prototypes
@@ -203,7 +202,7 @@ t_data			*frac_data(void);
 void			fractal_del(t_data *d);
 t_data			*main_frac(int n);
 void			init_mlx(t_data *d, int n);
-void			init_screen(t_img *d, void * mlx);
+void			init_screen(t_img *d, void *mlx);
 void			init_frac(t_data *d);
 void			init_variables(t_data *d);
 void			init_images(t_data *d);
@@ -235,8 +234,8 @@ void			display_for_tri(t_data *d, int opt);
 t_coor			option_tri(t_data *d, t_coor c);
 
 void			color_pixel(t_img *d, unsigned int color, int x, int y);
-unsigned int	get_img_color(t_data *d, float it, int max_i);
-int				get_r_color(float t);
+unsigned int	get_img_color(t_data *d, double it, int max_i);
+int				get_r_color(double t);
 unsigned int	create_color(int r, int g, int b);
 void			triangle_color(t_data *d, t_coor c, double h, int i);
 

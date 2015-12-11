@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:12:22 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/29 12:00:51 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/11 22:52:05 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,28 +49,28 @@ void	init_variables(t_data *d)
 	d->move_y = 0;
 	d->c0x = 1.5 * (-X_HALF) / (d->zoom * X_HALF);
 	d->c0y = (-Y_HALF) / (d->zoom * Y_HALF);
-	d->zoom_w = d->zoom * (float)X_HALF;
-	d->zoom_h = d->zoom * (float)Y_HALF;
+	d->zoom_w = d->zoom * (double)X_HALF;
+	d->zoom_h = d->zoom * (double)Y_HALF;
 	d->julia_cx = -0.8;
 	d->julia_cy = 0.3;
 }
 
 void	init_julia(t_data *d, int x, int y)
 {
-	d->u.RC = d->julia_cx;
-	d->u.IC = d->julia_cy;
-	d->u.RZ = 1.6 * (x - X_HALF) / (d->zoom_w) + d->os_x;
-	d->u.IZ = 1.2 * (y - Y_HALF) / (d->zoom_h) + d->os_y;
+	d->u.rc = d->julia_cx;
+	d->u.ic = d->julia_cy;
+	d->u.rz = 1.6 * (x - X_HALF) / (d->zoom_w) + d->os_x;
+	d->u.iz = 1.2 * (y - Y_HALF) / (d->zoom_h) + d->os_y;
 	d->u.i = 1;
 }
 
 void	init_mandelbrot(t_data *d, int x, int y)
 {
 	d->u.i = 0;
-	d->u.RC = 1.6 * (x - X_HALF) / (d->zoom * X_HALF);
-	d->u.RC += d->os_x - 0.5 + d->os_zoom_x / 2.0;
-	d->u.IC = 1.1 * (y - Y_HALF) / (d->zoom * Y_HALF);
-	d->u.IC += d->os_y + d->os_zoom_y / 2.0;
-	d->u.RZ = d->u.RC;
-	d->u.IZ = d->u.IC;
+	d->u.rc = 1.6 * (x - X_HALF) / (d->zoom * X_HALF);
+	d->u.rc += d->os_x - 0.5 + d->os_zoom_x / 2.0;
+	d->u.ic = 1.1 * (y - Y_HALF) / (d->zoom * Y_HALF);
+	d->u.ic += d->os_y + d->os_zoom_y / 2.0;
+	d->u.rz = d->u.rc;
+	d->u.iz = d->u.ic;
 }

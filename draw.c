@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/11 21:57:06 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/11 22:51:13 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void			draw(t_data *d)
 		y = 0;
 		while (y < Y_WIN)
 		{
-			d->u.RZ = 0.0;
-			d->u.IZ = 0.0;
+			d->u.rz = 0.0;
+			d->u.iz = 0.0;
 			color = d->fractal[d->cur_frac](d, x, y, max_i);
 			color_pixel(&d->screen, color, x, y);
 			y++;
