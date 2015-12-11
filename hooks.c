@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/08 17:13:30 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/11 19:52:33 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/12/11 21:55:30 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		expose_hook(t_data *d)
 		draw_triangle(d);
 	mlx_do_sync(d->mlx);
 	mlx_put_image_to_window(d->mlx, d->win, d->screen.img, 0, 0);
-	printf("Hook img2\n");
 	if (d->cur_frac == 6)
 		display_for_tree(d, d->tree_color_opt);
 	if (d->cur_frac == 7)
