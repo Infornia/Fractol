@@ -6,12 +6,13 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/12/11 19:17:36 by mwilk            ###   ########.fr        #
+#    Updated: 2016/02/09 22:21:20 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = fractol
+LIBFT = Libft
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -48,9 +49,13 @@ MLX_H = -I minilibx/
 MLX_L = -L minilibx/ -lmlx -framework OpenGl -framework Appkit
 #MLX_L = -L /usr/local/lib/ -lmlx -lm -framework OpenGl -framework Appkit
 
+
 all: makelib normal
 
 makelib:
+		git submodule add --force https://github.com/Infornia/Libft.git $(LIBFT)
+		git submodule init
+		git submodule update
 		@make -C Libft
 
 makerelib:
@@ -78,7 +83,8 @@ clean:
 	@echo "\033[36mT.T Miss you object files T.T \033[0m"
 
 fclean: clean
-	@/bin/rm $(NAME)
+	@/bin/rm -rf $(NAME) $(LIBFT)
+	@/bin/rm -rf .gitmodules
 	@echo "\033[36m X.x Bye Bye compiled files >_< \033[0m"
 
 re: fclean all
