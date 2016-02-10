@@ -6,21 +6,25 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2016/02/09 22:21:20 by mwilk            ###   ########.fr        #
+#    Updated: 2016/02/11 00:15:24 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
+## PROJECT
+
 NAME = fractol
-LIBFT = Libft
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+LIBFT = libft
 
-OBJ_PATH = ./obj/
-SRC_PATH = ./
+## COMPILATEUR
 
-OBJ = $(SRC:.c=.o)
+OS = $(shell uname -s)
+CC = clang
+FLAGS = -Wall -Wextra -Werror
+
+## FILES
+
 SRC = init.c\
 	  init_img.c\
 	  fractol.c\
@@ -36,56 +40,56 @@ SRC = init.c\
 	  mandelbrot.c\
 	  triangle.c\
 
-OBJS = $(addprefix $(OJB_PATH),$(OBJ))
-SRCS = $(addprefix $(SRC_PATH),$(SRC))
+INC =  -I ./inc/
+INC += -I ./libft/inc/
+INC += -I minilibx/
 
-FDF_H = -I ./
+OBJ = $(SRC:.c=.o)
 
-LIB_H = -I Libft/includes/
-LIB_L = -LLibft -lft
+LIB =  -L libft -lft
+LIB += -L minilibx/ -lmlx -framework OpenGl -framework Appkit
 
-MLX_H = -I minilibx/
-#MLX_H = -I usr/local/lib/
-MLX_L = -L minilibx/ -lmlx -framework OpenGl -framework Appkit
-#MLX_L = -L /usr/local/lib/ -lmlx -lm -framework OpenGl -framework Appkit
+## RULES
 
+all: ml $(LIBFT) $(NAME)
 
-all: makelib normal
-
-makelib:
-		git submodule add --force https://github.com/Infornia/Libft.git $(LIBFT)
-		git submodule init
-		git submodule update
-		@make -C Libft
-
-makerelib:
-		@make -C libft re
-
-cleanlib:
-		@make -C libft clean
-
-fcleanlib:
-		@make -C libft fclean
-
-normal: clean $(NAME)
-
-$(NAME):
-	@make -C minilibx/ clean
-	@make -C minilibx/
-	@gcc -g $(CFLAGS) $(LIB_H) $(FDF_H) $(MLX_H) -c $(SRCS) 
-	@mkdir $(OBJ_PATH)
-	@gcc -o $(NAME) $(OBJ) $(LIB_L) $(MLX_L)
-	@mv $(OBJ) $(OBJ_PATH)
+$(NAME): $(OBJ)
+	$(CC) $(FLAGS) $(INC) $(LIB) -o $(NAME) $(SRC)
 	@echo "\033[35m <(O.O<) WOW ! Very Fractol ! Amaze ! (>^o^)> \033[0m"
 
 clean:
-	@/bin/rm -rf $(OBJ_PATH)
-	@echo "\033[36mT.T Miss you object files T.T \033[0m"
+	rm -rf $(OBJ)
+	@echo "\033[36mT.T Miss you Frac object files T.T \033[0m"
 
-fclean: clean
-	@/bin/rm -rf $(NAME) $(LIBFT)
-	@/bin/rm -rf .gitmodules
+fclean: mfl clean
+	rm -rf $(NAME) $(LIBFT)
+	rm -rf .gitmodules
 	@echo "\033[36m X.x Bye Bye compiled files >_< \033[0m"
+
+%.o:%.c
+	$(CC) $(FLAGS) $(INC) -c $< -o $@
+
+ml:
+		git rm -rf --cached $(LIBFT)
+		git submodule add --force https://github.com/Infornia/libft.git $(LIBFT)
+		git submodule init
+		git submodule update
+		make -C libft
+
+
+mcl:
+		make -C libft clean
+
+mfl:
+		make -C libft fclean
+#		mkdir -p $(LIBFT)
+#		rm -rf $(LIBFT)
+#		rm -rf .git/modules/$(LIBFT)
+#		rm -fr $(LIBFT)
+#		rm -fr .gitmodules
+
+mrl:
+		make -C libft re
 
 re: fclean all
 
