@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/10 15:30:23 by mwilk             #+#    #+#             */
-/*   Updated: 2015/11/29 18:07:20 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/06/13 18:22:47 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void			print_usage(int ac)
 {
 	if (ac != 2)
 	{
-		ft_puts("\033[32m\tusage: ./fractol [Fractal number]\n\033[0m");
-		ft_puts("\033[35m\t0,1 = Mandelbrot \033[0m");
-		ft_puts("\033[35m\t2 = Newton \033[0m");
-		ft_puts("\033[35m\t3 = Burning ship \033[0m");
-		ft_puts("\033[35m\t4,5 = Julia \033[0m");
-		ft_puts("\033[35m\t6 = Tree \033[0m");
-		ft_puts("\033[35m\t7 = Sierpinski \033[0m");
+		ft_putendl("\033[32m\tusage: ./fractol [Fractal number]\n\033[0m");
+		ft_putendl("\033[35m\t0,1 = Mandelbrot \033[0m");
+		ft_putendl("\033[35m\t2 = Newton \033[0m");
+		ft_putendl("\033[35m\t3 = Burning ship \033[0m");
+		ft_putendl("\033[35m\t4,5 = Julia \033[0m");
+		ft_putendl("\033[35m\t6 = Tree \033[0m");
+		ft_putendl("\033[35m\t7 = Sierpinski \033[0m");
 		return ;
 	}
 	else

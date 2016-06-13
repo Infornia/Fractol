@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2016/02/11 00:15:24 by mwilk            ###   ########.fr        #
+#    Updated: 2016/06/13 18:18:18 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,10 +70,6 @@ fclean: mfl clean
 	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 ml:
-		git rm -rf --cached $(LIBFT)
-		git submodule add --force https://github.com/Infornia/libft.git $(LIBFT)
-		git submodule init
-		git submodule update
 		make -C libft
 
 

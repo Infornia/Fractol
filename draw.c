@@ -6,7 +6,7 @@
 /*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/13 18:16:44 by mwilk             #+#    #+#             */
-/*   Updated: 2015/12/11 22:51:13 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/06/13 18:21:53 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void			draw_triangle(t_data *d)
 	int		max_i;
 	t_coor	c;
 
+	c.x = 0;
+	c.y = 0;
 	ft_bzero(d->screen.data_img, X_WIN * Y_WIN * 4);
 	max_i = 1 + d->count / 7 + d->it;
 	c = option_tri(d, c);
